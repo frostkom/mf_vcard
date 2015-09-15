@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: MF vCard
-Plugin URI: 
+Plugin URI: www.github.com/frostkom/mf_vcard
 Version: 1.0.2
 Author: Martin Fors
 Author URI: www.frostkom.se
