@@ -41,11 +41,11 @@ class widget_vcard extends WP_Widget
 					echo "<p class='org'>"
 						.$instance['vcard_company'];
 
-						if($instance['vcard_company_no'] != '')
+						if(isset($instance['vcard_company_no']) && $instance['vcard_company_no'] != '')
 						{
 							echo " <span>(".$instance['vcard_company_no'].")</span>";
 						}
-						
+
 					echo "</p>";
 				}
 
@@ -98,7 +98,7 @@ class widget_vcard extends WP_Widget
 						<a href='mailto:".$instance['vcard_email']."' class='value'>".$instance['vcard_email']."</a>
 					</p>";
 				}
-				
+
 				if($instance['vcard_form'] != '')
 				{
 					$form_url = get_form_url($instance['vcard_form']);

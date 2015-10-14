@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: MF vCard
-Plugin URI: www.github.com/frostkom/mf_vcard
-Version: 1.0.3
+Plugin URI: http://github.com/frostkom/mf_vcard
+Version: 1.0.4
 Author: Martin Fors
-Author URI: www.frostkom.se
+Author URI: http://frostkom.se
 */
 
 add_action('admin_init', 'admin_init_vcard');
