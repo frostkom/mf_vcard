@@ -135,8 +135,6 @@ class widget_vcard extends WP_Widget
 	{
 		global $wpdb;
 
-		$is_super_admin = current_user_can('update_core');
-
 		$current_user = wp_get_current_user();
 
 		$defaults = array(
@@ -203,7 +201,7 @@ class widget_vcard extends WP_Widget
 
 		if(is_plugin_active('mf_form/index.php'))
 		{
-			$result = $wpdb->get_results("SELECT queryID, queryName FROM ".$wpdb->base_prefix."query WHERE queryDeleted = '0'".($is_super_admin ? "" : " AND (blogID = '".$wpdb->blogid."' OR blogID IS null)")." ORDER BY queryCreated DESC");
+			$result = $wpdb->get_results("SELECT queryID, queryName FROM ".$wpdb->base_prefix."query WHERE queryDeleted = '0'".(IS_ADMIN ? "" : " AND (blogID = '".$wpdb->blogid."' OR blogID IS null)")." ORDER BY queryCreated DESC");
 
 			if($wpdb->num_rows > 0)
 			{
