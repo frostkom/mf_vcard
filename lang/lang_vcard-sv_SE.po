@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MF Forms\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-25 11:32+0100\n"
+"POT-Creation-Date: 2016-02-12 11:01+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Martin Fors\n"
 "Language-Team: Martin Fors\n"
@@ -20,57 +20,65 @@ msgid "Display a vCard with custom information"
 msgstr "Visa en vCard med valfri information"
 
 #: ../include/classes.php:14
+#: ../include/functions.php:40
 msgid "vCard"
 msgstr ""
 
-#: ../include/classes.php:107
-#: ../include/classes.php:226
+#: ../include/classes.php:131
+#: ../include/classes.php:234
 msgid "E-mail form"
 msgstr "E-postformulär"
 
-#: ../include/classes.php:159
+#: ../include/classes.php:182
 msgid "Heading"
 msgstr "Rubrik"
 
-#: ../include/classes.php:163
+#: ../include/classes.php:186
 msgid "Name"
 msgstr "Namn"
 
-#: ../include/classes.php:167
+#: ../include/classes.php:190
 msgid "Organization"
 msgstr "Företag"
 
-#: ../include/classes.php:174
+#: ../include/classes.php:197
 msgid "Organization no"
 msgstr "Organisationsnummer"
 
-#: ../include/classes.php:180
+#: ../include/classes.php:203
 msgid "Address"
 msgstr "Adress"
 
-#: ../include/classes.php:184
+#: ../include/classes.php:207
 msgid "Zip code"
 msgstr "Postnummer"
 
-#: ../include/classes.php:188
+#: ../include/classes.php:211
 msgid "City"
 msgstr "Ort"
 
-#: ../include/classes.php:192
+#: ../include/classes.php:215
 msgid "Country"
 msgstr "Land"
 
-#: ../include/classes.php:196
+#: ../include/classes.php:219
 msgid "Phone number"
 msgstr "Telefonnummer"
 
-#: ../include/classes.php:200
+#: ../include/classes.php:223
 msgid "E-mail"
 msgstr "E-post"
 
-#: ../include/classes.php:212
-msgid "Choose here"
-msgstr "Välj här"
+#: ../include/functions.php:15
+msgid "Settings"
+msgstr "Inställningar"
+
+#: ../include/functions.php:27
+msgid "Show icons"
+msgstr "Visa ikoner"
+
+#~ msgid "Choose here"
+#~ msgstr "Välj här"
 
 #~ msgid "Company"
 #~ msgstr "Företag"
@@ -231,9 +239,6 @@ msgstr "Välj här"
 #~ msgid "Preview"
 #~ msgstr "Förhandsgranska"
 
-#~ msgid "Settings"
-#~ msgstr "Inställningar"
-
 #~ msgid "Choose page here"
 #~ msgstr "Välj sida här"
 
@@ -253,9 +258,6 @@ msgstr "Välj här"
 
 #~ msgid "Improve UX"
 #~ msgstr "Förbättra användarupplevelsen"
-
-#~ msgid "Show Answers"
-#~ msgstr "Visa svar"
 
 #~ msgid "Send e-mail from/to"
 #~ msgstr "Skicka e-post från/till"

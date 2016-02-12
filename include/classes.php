@@ -20,6 +20,8 @@ class widget_vcard extends WP_Widget
 
 		extract($args);
 
+		$setting_vcard_icons = get_option('setting_vcard_icons');
+
 		echo $before_widget;
 
 			if($instance['vcard_heading'] != '')
@@ -33,12 +35,16 @@ class widget_vcard extends WP_Widget
 
 				if($instance['vcard_name'] != '')
 				{
-					echo "<p class='fn'>".$instance['vcard_name']."</p>";
+					echo "<p class='fn'>"
+						.($setting_vcard_icons ? "<i class='fa fa-user'></i> " : "")
+						.$instance['vcard_name']
+					."</p>";
 				}
 
 				if($instance['vcard_company'] != '')
 				{
 					echo "<p class='org'>"
+						.($setting_vcard_icons ? "<i class='fa fa-building'></i> " : "")
 						.$instance['vcard_company'];
 
 						if(isset($instance['vcard_company_no']) && $instance['vcard_company_no'] != '')
@@ -55,28 +61,38 @@ class widget_vcard extends WP_Widget
 
 						if($instance['vcard_address'] != '')
 						{
-							echo "<p class='street-address'>".$instance['vcard_address']."</p>";
+							echo "<p class='street-address'>"
+								.($setting_vcard_icons ? "<i class='fa fa-envelope-o'></i> " : "")
+								.$instance['vcard_address']
+							."</p>";
 						}
 
 						if($instance['vcard_zipcode'] != '' || $instance['vcard_city'] != '' || $instance['vcard_country'] != '')
 						{
-							echo "<p>";
+							echo "<p>"
+								.($setting_vcard_icons ? "<i class='fa fa-globe'></i> " : "");
 
 								if($instance['vcard_zipcode'] != '')
 								{
-									echo "<span class='postal-code'>".$instance['vcard_zipcode']."</span>";
+									echo "<span class='postal-code'>"
+										.$instance['vcard_zipcode']
+									."</span>";
 								}
 
 								if($instance['vcard_city'] != '')
 								{
 									echo ($instance['vcard_zipcode'] != '' ? " " : "")
-										."<span class='locality'>".$instance['vcard_city']."</span>";
+									."<span class='locality'>"
+										.$instance['vcard_city']
+									."</span>";
 								}
 
 								if($instance['vcard_country'] != '')
 								{
 									echo ($instance['vcard_zipcode'] != '' || $instance['vcard_city'] != '' ? ", " : "")
-										."<span class='country-name'>".$instance['vcard_country']."</span>";
+									."<span class='country-name'>"
+										.$instance['vcard_country']
+									."</span>";
 								}
 
 							echo "</p>";
@@ -88,14 +104,20 @@ class widget_vcard extends WP_Widget
 				if($instance['vcard_phone'] != '')
 				{
 					echo "<p class='tel'>
-						<a href='".format_phone_no($instance['vcard_phone'])."' class='value'>".$instance['vcard_phone']."</a>
+						<a href='".format_phone_no($instance['vcard_phone'])."' class='value'>"
+							.($setting_vcard_icons ? "<i class='fa fa-phone'></i> " : "")
+							.$instance['vcard_phone']
+						."</a>
 					</p>";
 				}
 
 				if($instance['vcard_email'] != '')
 				{
 					echo "<p class='email'>
-						<a href='mailto:".$instance['vcard_email']."' class='value'>".$instance['vcard_email']."</a>
+						<a href='mailto:".$instance['vcard_email']."' class='value'>"
+							.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "")
+							.$instance['vcard_email']
+						."</a>
 					</p>";
 				}
 
@@ -104,7 +126,10 @@ class widget_vcard extends WP_Widget
 					$form_url = get_form_url($instance['vcard_form']);
 
 					echo "<p>
-						<a href='".$form_url."'>".__("E-mail form", 'lang_vcard')."</a>
+						<a href='".$form_url."'>"
+							.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "")
+							.__("E-mail form", 'lang_vcard')
+						."</a>
 					</p>";
 				}
 
@@ -201,28 +226,12 @@ class widget_vcard extends WP_Widget
 
 		if(is_plugin_active('mf_form/index.php'))
 		{
-			$result = $wpdb->get_results("SELECT queryID, queryName FROM ".$wpdb->base_prefix."query WHERE queryDeleted = '0'".(IS_ADMIN ? "" : " AND (blogID = '".$wpdb->blogid."' OR blogID IS null)")." ORDER BY queryCreated DESC");
+			$obj_form = new mf_form();
+			$arr_data = $obj_form->get_form_array();
 
-			if($wpdb->num_rows > 0)
+			if(count($arr_data) > 1)
 			{
-				$arr_data = array();
-
-				$arr_data[]	= array("", "-- ".__("Choose here", 'lang_vcard')." --");
-
-				foreach($result as $r)
-				{
-					$form_page = get_page_from_form($r->queryID);
-
-					if(count($form_page) > 0)
-					{
-						$arr_data[]	= array($r->queryID, $r->queryName);
-					}
-				}
-
-				if(count($arr_data) > 1)
-				{
-					echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'compare' => $instance['vcard_form'], 'xtra' => "class='widefat'"));
-				}
+				echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'compare' => $instance['vcard_form']));
 			}
 		}
 	}
