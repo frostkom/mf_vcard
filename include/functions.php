@@ -10,13 +10,6 @@ function widgets_vcard()
 	register_widget('widget_vcard');
 }
 
-function add_action_vcard($links)
-{
-	$links[] = "<a href='".admin_url('options-general.php?page=settings_mf_base#settings_vcard')."'>".__("Settings", 'lang_vcard')."</a>";
-
-	return $links;
-}
-
 function settings_vcard()
 {
 	$options_area = "settings_vcard";
@@ -37,7 +30,9 @@ function settings_vcard()
 
 function settings_vcard_callback()
 {
-	echo settings_header('settings_vcard', __("vCard", 'lang_vcard'));
+	$setting_key = get_setting_key(__FUNCTION__);
+
+	echo settings_header($setting_key, __("vCard", 'lang_vcard'));
 }
 
 function setting_vcard_icons_callback()
