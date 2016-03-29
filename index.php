@@ -1,11 +1,15 @@
 <?php
 /*
 Plugin Name: MF vCard
-Plugin URI: http://github.com/frostkom/mf_vcard
+Plugin URI: https://github.com/frostkom/mf_vcard
 Description: 
-Version: 1.3.0
+Version: 1.3.5
 Author: Martin Fors
 Author URI: http://frostkom.se
+Text Domain: lang_vcard
+Domain Path: /lang
+
+GitHub Plugin URI: frostkom/mf_vcard
 */
 
 include_once("include/classes.php");

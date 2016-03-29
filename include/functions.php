@@ -12,7 +12,7 @@ function widgets_vcard()
 
 function settings_vcard()
 {
-	$options_area = "settings_vcard";
+	$options_area = __FUNCTION__;
 
 	add_settings_section($options_area, "", $options_area.'_callback', BASE_OPTIONS_PAGE);
 
@@ -37,9 +37,8 @@ function settings_vcard_callback()
 
 function setting_vcard_icons_callback()
 {
-	global $wpdb;
+	$setting_key = get_setting_key(__FUNCTION__);
+	$option = get_option($setting_key);
 
-	$option = get_option('setting_vcard_icons');
-
-	echo show_checkbox(array('name' => 'setting_vcard_icons', 'value' => '1', 'compare' => $option));
+	echo show_select(array('data' => get_yes_no_for_select(array('return_integer' => true)), 'name' => $setting_key, 'compare' => $option));
 }
