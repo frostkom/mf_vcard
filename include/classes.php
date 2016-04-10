@@ -224,7 +224,7 @@ class widget_vcard extends WP_Widget
 			<input type='text' name='".$this->get_field_name('vcard_email')."' value='".$instance['vcard_email']."' class='widefat'>
 		</p>";
 
-		if(is_plugin_active('mf_form/index.php'))
+		if(is_plugin_active("mf_form/index.php"))
 		{
 			$obj_form = new mf_form();
 			$arr_data = $obj_form->get_form_array();
