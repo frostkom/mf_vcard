@@ -178,51 +178,41 @@ class widget_vcard extends WP_Widget
 
 		$instance = wp_parse_args((array)$instance, $defaults);
 
-		echo "<p>
-			<label for='".$this->get_field_id('vcard_heading')."'>".__("Heading", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_heading')."' value='".$instance['vcard_heading']."' class='widefat'>
-		</p>
-		<p>
-			<label for='".$this->get_field_id('vcard_name')."'>".__("Name", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_name')."' value='".$instance['vcard_name']."' class='widefat'>
-		</p>
-		<p>
-			<label for='".$this->get_field_id('vcard_company')."'>".__("Organization", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_company')."' value='".$instance['vcard_company']."' class='widefat'>
-		</p>";
+		echo "<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_heading'), 'text' => __("Heading", 'lang_vcard'), 'value' => $instance['vcard_heading'], 'xtra' => "class='widefat'"))
+		."</p>
+		<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_name'), 'text' => __("Name", 'lang_vcard'), 'value' => $instance['vcard_name'], 'xtra' => "class='widefat'"))
+		."</p>
+		<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_company'), 'text' => __("Organization", 'lang_vcard'), 'value' => $instance['vcard_company'], 'xtra' => "class='widefat'"))
+		."</p>";
 
 		if($instance['vcard_company'] != '')
 		{
-			echo "<p>
-				<label for='".$this->get_field_id('vcard_company_no')."'>".__("Organization no", 'lang_vcard')."</label>
-				<input type='text' name='".$this->get_field_name('vcard_company_no')."' value='".$instance['vcard_company_no']."' class='widefat'>
-			</p>";
+			echo "<p>"
+				.show_textfield(array('name' => $this->get_field_name('vcard_company_no'), 'text' => __("Organization Number", 'lang_vcard'), 'value' => $instance['vcard_company_no'], 'xtra' => "class='widefat'"))
+			."</p>";
 		}
 
-		echo "<p>
-			<label for='".$this->get_field_id('vcard_address')."'>".__("Address", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_address')."' value='".$instance['vcard_address']."' class='widefat'>
-		</p>
-		<p>
-			<label for='".$this->get_field_id('vcard_zipcode')."'>".__("Zip code", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_zipcode')."' value='".$instance['vcard_zipcode']."' class='widefat'>
-		</p>
-		<p>
-			<label for='".$this->get_field_id('vcard_city')."'>".__("City", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_city')."' value='".$instance['vcard_city']."' class='widefat'>
-		</p>
-		<p>
-			<label for='".$this->get_field_id('vcard_country')."'>".__("Country", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_country')."' value='".$instance['vcard_country']."' class='widefat'>
-		</p>
-		<p>
-			<label for='".$this->get_field_id('vcard_phone')."'>".__("Phone number", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_phone')."' value='".$instance['vcard_phone']."' class='widefat'>
-		</p>
-		<p>
-			<label for='".$this->get_field_id('vcard_email')."'>".__("E-mail", 'lang_vcard')."</label>
-			<input type='text' name='".$this->get_field_name('vcard_email')."' value='".$instance['vcard_email']."' class='widefat'>
-		</p>";
+		echo "<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Address", 'lang_vcard'), 'value' => $instance['vcard_address'], 'xtra' => "class='widefat'"))
+		."</p>
+		<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_zipcode'), 'text' => __("Zip Code", 'lang_vcard'), 'value' => $instance['vcard_zipcode'], 'xtra' => "class='widefat'"))
+		."</p>
+		<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_city'), 'text' => __("City", 'lang_vcard'), 'value' => $instance['vcard_city'], 'xtra' => "class='widefat'"))
+		."</p>
+		<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_country'), 'text' => __("Country", 'lang_vcard'), 'value' => $instance['vcard_country'], 'xtra' => "class='widefat'"))
+		."</p>
+		<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone'], 'xtra' => "class='widefat'"))
+		."</p>
+		<p>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_email'), 'text' => __("Email", 'lang_vcard'), 'value' => $instance['vcard_email'], 'xtra' => "class='widefat'"))
+		."</p>";
 
 		if(is_plugin_active("mf_form/index.php"))
 		{
@@ -231,7 +221,9 @@ class widget_vcard extends WP_Widget
 
 			if(count($arr_data) > 1)
 			{
-				echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'compare' => $instance['vcard_form']));
+				echo "<p>"
+					.show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'value' => $instance['vcard_form']))
+				."</p>";
 			}
 		}
 	}
