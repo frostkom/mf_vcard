@@ -144,7 +144,7 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_heading'] = strip_tags($new_instance['vcard_heading']);
 		$instance['vcard_name'] = strip_tags($new_instance['vcard_name']);
 		$instance['vcard_company'] = strip_tags($new_instance['vcard_company']);
-		$instance['vcard_company_no'] = strip_tags($new_instance['vcard_company_no']);
+		$instance['vcard_company_no'] = isset($new_instance['vcard_company_no']) ? strip_tags($new_instance['vcard_company_no']) : "";
 		$instance['vcard_address'] = strip_tags($new_instance['vcard_address']);
 		$instance['vcard_zipcode'] = strip_tags($new_instance['vcard_zipcode']);
 		$instance['vcard_city'] = strip_tags($new_instance['vcard_city']);
