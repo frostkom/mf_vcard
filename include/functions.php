@@ -1,5 +1,13 @@
 <?php
 
+function init_vcard()
+{
+	if(!is_admin())
+	{
+		wp_enqueue_style('style_vcard', plugin_dir_url(__FILE__)."style.css");
+	}
+}
+
 function admin_init_vcard()
 {
 	new recommend_plugin(array('path' => "mf_form/index.php", 'name' => "MF Form", 'url' => "//github.com/frostkom/mf_form"));

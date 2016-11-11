@@ -121,16 +121,38 @@ class widget_vcard extends WP_Widget
 					</p>";
 				}
 
-				if($instance['vcard_form'] != '')
+				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
 				{
-					$form_url = get_form_url($instance['vcard_form']);
+					echo "<p class='social'>";
 
-					echo "<p>
-						<a href='".$form_url."'>"
-							.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "")
-							.__("E-mail form", 'lang_vcard')
-						."</a>
-					</p>";
+						if($instance['vcard_form'] != '')
+						{
+							$form_url = get_form_url($instance['vcard_form']);
+
+							echo "<a href='".$form_url."'><i class='fa fa-envelope'></i></a>";
+						}
+
+						if($instance['vcard_facebook'] != '')
+						{
+							echo "<a href='//facebook.com/".$instance['vcard_facebook']."'><i class='fa fa-facebook'></i></a>";
+						}
+
+						if($instance['vcard_gplus'] != '')
+						{
+							echo "<a href='//plus.google.com/".$instance['vcard_gplus']."'><i class='fa fa-google-plus'></i></a>";
+						}
+
+						if($instance['vcard_linkedin'] != '')
+						{
+							echo "<a href='//linkedin.com/in/".$instance['vcard_linkedin']."'><i class='fa fa-linkedin'></i></a>";
+						}
+
+						if($instance['vcard_twitter'] != '')
+						{
+							echo "<a href='//twitter.com/".$instance['vcard_twitter']."'><i class='fa fa-twitter'></i></a>";
+						}
+
+					echo "</p>";
 				}
 
 			echo "</div>"
@@ -152,6 +174,10 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_phone'] = strip_tags($new_instance['vcard_phone']);
 		$instance['vcard_email'] = strip_tags($new_instance['vcard_email']);
 		$instance['vcard_form'] = strip_tags($new_instance['vcard_form']);
+		$instance['vcard_facebook'] = strip_tags($new_instance['vcard_facebook']);
+		$instance['vcard_gplus'] = strip_tags($new_instance['vcard_gplus']);
+		$instance['vcard_linkedin'] = strip_tags($new_instance['vcard_linkedin']);
+		$instance['vcard_twitter'] = strip_tags($new_instance['vcard_twitter']);
 
 		return $instance;
 	}
@@ -174,57 +200,57 @@ class widget_vcard extends WP_Widget
 			'vcard_phone' => "",
 			'vcard_email' => get_bloginfo('admin_email'),
 			'vcard_form' => "",
+			'vcard_facebook' => "",
+			'vcard_gplus' => "",
+			'vcard_linkedin' => "",
+			'vcard_twitter' => "",
 		);
 
 		$instance = wp_parse_args((array)$instance, $defaults);
 
-		echo "<p>"
+		echo "<div class='mf_form'>"
 			.show_textfield(array('name' => $this->get_field_name('vcard_heading'), 'text' => __("Heading", 'lang_vcard'), 'value' => $instance['vcard_heading'], 'xtra' => "class='widefat'"))
-		."</p>
-		<p>"
 			.show_textfield(array('name' => $this->get_field_name('vcard_name'), 'text' => __("Name", 'lang_vcard'), 'value' => $instance['vcard_name'], 'xtra' => "class='widefat'"))
-		."</p>
-		<p>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_company'), 'text' => __("Organization", 'lang_vcard'), 'value' => $instance['vcard_company'], 'xtra' => "class='widefat'"))
-		."</p>";
+			.show_textfield(array('name' => $this->get_field_name('vcard_company'), 'text' => __("Organization", 'lang_vcard'), 'value' => $instance['vcard_company'], 'xtra' => "class='widefat'"));
 
-		if($instance['vcard_company'] != '')
-		{
-			echo "<p>"
-				.show_textfield(array('name' => $this->get_field_name('vcard_company_no'), 'text' => __("Organization Number", 'lang_vcard'), 'value' => $instance['vcard_company_no'], 'xtra' => "class='widefat'"))
-			."</p>";
-		}
-
-		echo "<p>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Address", 'lang_vcard'), 'value' => $instance['vcard_address'], 'xtra' => "class='widefat'"))
-		."</p>
-		<p>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_zipcode'), 'text' => __("Zip Code", 'lang_vcard'), 'value' => $instance['vcard_zipcode'], 'xtra' => "class='widefat'"))
-		."</p>
-		<p>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_city'), 'text' => __("City", 'lang_vcard'), 'value' => $instance['vcard_city'], 'xtra' => "class='widefat'"))
-		."</p>
-		<p>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_country'), 'text' => __("Country", 'lang_vcard'), 'value' => $instance['vcard_country'], 'xtra' => "class='widefat'"))
-		."</p>
-		<p>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone'], 'xtra' => "class='widefat'"))
-		."</p>
-		<p>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_email'), 'text' => __("Email", 'lang_vcard'), 'value' => $instance['vcard_email'], 'xtra' => "class='widefat'"))
-		."</p>";
-
-		if(is_plugin_active("mf_form/index.php"))
-		{
-			$obj_form = new mf_form();
-			$arr_data = $obj_form->get_form_array();
-
-			if(count($arr_data) > 1)
+			if($instance['vcard_company'] != '')
 			{
-				echo "<p>"
-					.show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'value' => $instance['vcard_form']))
-				."</p>";
+				echo show_textfield(array('name' => $this->get_field_name('vcard_company_no'), 'text' => __("Organization Number", 'lang_vcard'), 'value' => $instance['vcard_company_no'], 'xtra' => "class='widefat'"));
 			}
-		}
+
+			echo show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Address", 'lang_vcard'), 'value' => $instance['vcard_address'], 'xtra' => "class='widefat'"));
+
+			if($instance['vcard_address'] != '')
+			{
+				echo "<div class='flex_flow'>"
+					.show_textfield(array('name' => $this->get_field_name('vcard_zipcode'), 'text' => __("Zip Code", 'lang_vcard'), 'value' => $instance['vcard_zipcode'], 'xtra' => "class='widefat'"))
+					.show_textfield(array('name' => $this->get_field_name('vcard_city'), 'text' => __("City", 'lang_vcard'), 'value' => $instance['vcard_city'], 'xtra' => "class='widefat'"))
+				."</div>"
+				.show_textfield(array('name' => $this->get_field_name('vcard_country'), 'text' => __("Country", 'lang_vcard'), 'value' => $instance['vcard_country'], 'xtra' => "class='widefat'"));
+			}
+
+			echo show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone'], 'xtra' => "class='widefat'"));
+
+			if(!($instance['vcard_form'] > 0))
+			{
+				echo show_textfield(array('name' => $this->get_field_name('vcard_email'), 'text' => __("Email", 'lang_vcard'), 'value' => $instance['vcard_email'], 'xtra' => "class='widefat'"));
+			}
+
+			if($instance['vcard_email'] == '' && is_plugin_active("mf_form/index.php"))
+			{
+				$obj_form = new mf_form();
+				$arr_data = $obj_form->get_form_array();
+
+				if(count($arr_data) > 1)
+				{
+					echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'value' => $instance['vcard_form']));
+				}
+			}
+			
+			echo show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook'], 'xtra' => "class='widefat'"))
+			.show_textfield(array('name' => $this->get_field_name('vcard_gplus'), 'text' => __("Google+", 'lang_vcard'), 'value' => $instance['vcard_gplus'], 'xtra' => "class='widefat'"))
+			.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => __("LinkedIn", 'lang_vcard'), 'value' => $instance['vcard_linkedin'], 'xtra' => "class='widefat'"))
+			.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => __("Twitter", 'lang_vcard'), 'value' => $instance['vcard_twitter'], 'xtra' => "class='widefat'"))
+		."</div>";
 	}
 }

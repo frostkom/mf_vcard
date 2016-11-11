@@ -3,7 +3,7 @@
 Plugin Name: MF vCard
 Plugin URI: https://github.com/frostkom/mf_vcard
 Description: 
-Version: 1.3.12
+Version: 2.0.2
 Author: Martin Fors
 Author URI: http://frostkom.se
 Text Domain: lang_vcard
@@ -15,6 +15,10 @@ GitHub Plugin URI: frostkom/mf_vcard
 include_once("include/classes.php");
 include_once("include/functions.php");
 
+add_action('widgets_init', 'widgets_vcard');
+
+add_action('init', 'init_vcard');
+
 if(is_admin())
 {
 	register_uninstall_hook(__FILE__, 'uninstall_vcard');
@@ -23,7 +27,6 @@ if(is_admin())
 	add_action('admin_init', 'settings_vcard');
 }
 
-add_action('widgets_init', 'widgets_vcard');
 
 load_plugin_textdomain('lang_vcard', false, dirname(plugin_basename(__FILE__)).'/lang/');
 
