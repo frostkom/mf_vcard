@@ -9,20 +9,12 @@
 		{
 			background: rgba(0, 0, 0, .2);
 			border-radius: 2em;
+			color: #fff;
 			display: inline-block;
 			margin-top: .4em;
 			padding: .3em .8em;
 			text-decoration: none;
 		}
-
-	.vcard .telno
-	{
-		border-radius: 1.5em;
-		color: #fff;
-		display: inline-block;
-		margin-bottom: .5em;
-		padding: .5em 1em .5em .5em;
-	}
 	
 	.vcard .social
 	{
@@ -32,44 +24,113 @@
 		.vcard .social .fa
 		{
 			background: #999;
-			border-radius: 2em;
+			border: .2em solid #999;
+			border-radius: 50%;
 			color: #fff;
-			font-size: 1.3em;
+			font-size: 1.8em;
 			margin-right: .5em;
-			padding: .6em;
-			transition: all .4s ease-in-out;
+			padding: .4em;
+			position: relative;
+			transition: all .8s ease;
 		}
+
+			.vcard .social .fa:after
+			{
+				border: .1em solid #999;
+				border-radius: 50%;
+				bottom: 0;
+				content: '';
+				left: 0;
+				opacity: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				transform: scale(0);
+				transition: all 1.6s ease;
+			}
+
+				.vcard .social .fa:hover:after
+				{
+					opacity: .4;
+					transform: scale(1.5);
+				}
 
 			.vcard .social .fa:hover
 			{
-				opacity: .7;
+				background: #fff;
+				transform: rotate(360deg);
 			}
 
-			.vcard .social .fa-envelope
-			{
-				
-			}
+			.vcard .social .fa-envelope{}
+
+				.vcard .social .fa-envelope:hover
+				{
+					color: #999;
+				}
 
 			.vcard .social .fa-facebook
 			{
 				background: #3b5998;
-				padding: .6em .8em;
+				border-color: #3b5998;
+				padding: .4em .6em;
 			}
+
+				.vcard .social .fa-facebook:after
+				{
+					border-color: #3b5998;
+				}
+
+				.vcard .social .fa-facebook:hover
+				{
+					color: #3b5998;
+				}
 
 			.vcard .social .fa-google-plus
 			{
 				background: #dd4b39;
-				padding: .6em .5em;
+				border-color: #dd4b39;
 			}
+
+				.vcard .social .fa-google-plus:after
+				{
+					border-color: #dd4b39;
+				}
+
+				.vcard .social .fa-google-plus:hover
+				{
+					color: #dd4b39;
+				}
 
 			.vcard .social .fa-linkedin
 			{
 				background: #007bb6;
-				padding: .6em .7em;
+				border-color: #007bb6;
+				padding: .4em .5em;
 			}
+
+				.vcard .social .fa-linkedin:after
+				{
+					border-color: #007bb6;
+				}
+
+				.vcard .social .fa-linkedin:hover
+				{
+					color: #007bb6;
+				}
 
 			.vcard .social .fa-twitter
 			{
 				background: #00aced;
+				border-color: #00aced;
 			}
+
+				.vcard .social .fa-twitter:after
+				{
+					border-color: #00aced;
+				}
+
+				.vcard .social .fa-twitter:hover
+				{
+					color: #00aced;
+				}
 }
