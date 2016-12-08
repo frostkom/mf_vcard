@@ -132,22 +132,22 @@ class widget_vcard extends WP_Widget
 							echo "<a href='".$form_url."'><i class='fa fa-envelope'></i></a>";
 						}
 
-						if($instance['vcard_facebook'] != '')
+						if(isset($instance['vcard_facebook']) && $instance['vcard_facebook'] != '')
 						{
 							echo "<a href='//facebook.com/".$instance['vcard_facebook']."'><i class='fa fa-facebook'></i></a>";
 						}
 
-						if($instance['vcard_gplus'] != '')
+						if(isset($instance['vcard_gplus']) && $instance['vcard_gplus'] != '')
 						{
 							echo "<a href='//plus.google.com/".$instance['vcard_gplus']."'><i class='fa fa-google-plus'></i></a>";
 						}
 
-						if($instance['vcard_linkedin'] != '')
+						if(isset($instance['vcard_linkedin']) && $instance['vcard_linkedin'] != '')
 						{
 							echo "<a href='//linkedin.com/in/".$instance['vcard_linkedin']."'><i class='fa fa-linkedin'></i></a>";
 						}
 
-						if($instance['vcard_twitter'] != '')
+						if(isset($instance['vcard_twitter']) && $instance['vcard_twitter'] != '')
 						{
 							echo "<a href='//twitter.com/".$instance['vcard_twitter']."'><i class='fa fa-twitter'></i></a>";
 						}
