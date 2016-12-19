@@ -52,7 +52,7 @@
 				.vcard .social .fa:hover:after
 				{
 					opacity: .4;
-					transform: scale(1.5);
+					transform: scale(1);
 				}
 
 			.vcard .social .fa:hover

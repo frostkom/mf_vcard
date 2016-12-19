@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-22 11:37+0100\n"
+"POT-Creation-Date: 2016-12-15 12:00+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Martin Fors\n"
 "Language-Team: \n"
@@ -20,58 +20,76 @@ msgid "Display a vCard with custom information"
 msgstr "Visa en vCard med valfri information"
 
 #: ../include/classes.php:14
-#: ../include/functions.php:35
+#: ../include/functions.php:43
 msgid "vCard"
 msgstr ""
 
-#: ../include/classes.php:131
-#: ../include/classes.php:234
-msgid "E-mail form"
-msgstr "E-postformulär"
-
-#: ../include/classes.php:182
+#: ../include/classes.php:212
 msgid "Heading"
 msgstr "Rubrik"
 
-#: ../include/classes.php:186
+#: ../include/classes.php:213
 msgid "Name"
 msgstr "Namn"
 
-#: ../include/classes.php:190
+#: ../include/classes.php:214
 msgid "Organization"
 msgstr "Företag"
 
-#: ../include/classes.php:197
-msgid "Organization no"
+#: ../include/classes.php:218
+msgid "Organization Number"
 msgstr "Organisationsnummer"
 
-#: ../include/classes.php:203
+#: ../include/classes.php:221
 msgid "Address"
 msgstr "Adress"
 
-#: ../include/classes.php:207
-msgid "Zip code"
+#: ../include/classes.php:226
+msgid "Zip Code"
 msgstr "Postnummer"
 
-#: ../include/classes.php:211
+#: ../include/classes.php:227
 msgid "City"
 msgstr "Ort"
 
-#: ../include/classes.php:215
+#: ../include/classes.php:229
 msgid "Country"
 msgstr "Land"
 
-#: ../include/classes.php:219
-msgid "Phone number"
+#: ../include/classes.php:232
+msgid "Phone Number"
 msgstr "Telefonnummer"
 
-#: ../include/classes.php:223
-msgid "E-mail"
-msgstr "E-post"
+#: ../include/classes.php:236
+msgid "Email"
+msgstr "Epost"
 
-#: ../include/functions.php:20
+#: ../include/classes.php:246
+msgid "E-mail form"
+msgstr "E-postformulär"
+
+#: ../include/classes.php:250
+msgid "Facebook"
+msgstr ""
+
+#: ../include/classes.php:251
+msgid "Google+"
+msgstr ""
+
+#: ../include/classes.php:252
+msgid "LinkedIn"
+msgstr ""
+
+#: ../include/classes.php:253
+msgid "Twitter"
+msgstr ""
+
+#: ../include/functions.php:28
 msgid "Show icons"
 msgstr "Visa ikoner"
+
+#~ msgid "Organization no"
+#~ msgstr "Organisationsnummer"
 
 #~ msgid "Settings"
 #~ msgstr "Inställningar"
