@@ -168,11 +168,11 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_company'] = strip_tags($new_instance['vcard_company']);
 		$instance['vcard_company_no'] = isset($new_instance['vcard_company_no']) ? strip_tags($new_instance['vcard_company_no']) : "";
 		$instance['vcard_address'] = strip_tags($new_instance['vcard_address']);
-		$instance['vcard_zipcode'] = strip_tags($new_instance['vcard_zipcode']);
-		$instance['vcard_city'] = strip_tags($new_instance['vcard_city']);
-		$instance['vcard_country'] = strip_tags($new_instance['vcard_country']);
+		$instance['vcard_zipcode'] = isset($new_instance['vcard_zipcode']) ? strip_tags($new_instance['vcard_zipcode']) : "";
+		$instance['vcard_city'] = isset($new_instance['vcard_city']) ? strip_tags($new_instance['vcard_city']) : "";
+		$instance['vcard_country'] = isset($new_instance['vcard_country']) ? strip_tags($new_instance['vcard_country']) : "";
 		$instance['vcard_phone'] = strip_tags($new_instance['vcard_phone']);
-		$instance['vcard_email'] = strip_tags($new_instance['vcard_email']);
+		$instance['vcard_email'] = isset($new_instance['vcard_email']) ? strip_tags($new_instance['vcard_email']) : "";
 		$instance['vcard_form'] = strip_tags($new_instance['vcard_form']);
 		$instance['vcard_facebook'] = strip_tags($new_instance['vcard_facebook']);
 		$instance['vcard_gplus'] = strip_tags($new_instance['vcard_gplus']);
