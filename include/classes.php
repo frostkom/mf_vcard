@@ -103,7 +103,7 @@ class widget_vcard extends WP_Widget
 
 				if($instance['vcard_phone'] != '')
 				{
-					echo "<p class='tel'>
+					echo "<p class='contact tel'>
 						<a href='".format_phone_no($instance['vcard_phone'])."' class='value'>"
 							.($setting_vcard_icons ? "<i class='fa fa-phone'></i> " : "")
 							.$instance['vcard_phone']
@@ -113,7 +113,7 @@ class widget_vcard extends WP_Widget
 
 				if($instance['vcard_email'] != '')
 				{
-					echo "<p class='email'>
+					echo "<p class='contact email'>
 						<a href='mailto:".$instance['vcard_email']."' class='value'>"
 							.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "")
 							.$instance['vcard_email']

@@ -5,7 +5,7 @@
 		
 	}
 
-		.vcard .tel a, .vcard .form a
+		.vcard .contact a
 		{
 			background: rgba(0, 0, 0, .2);
 			border-radius: 2em;
