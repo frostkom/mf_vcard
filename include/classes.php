@@ -173,7 +173,7 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_country'] = isset($new_instance['vcard_country']) ? strip_tags($new_instance['vcard_country']) : "";
 		$instance['vcard_phone'] = strip_tags($new_instance['vcard_phone']);
 		$instance['vcard_email'] = isset($new_instance['vcard_email']) ? strip_tags($new_instance['vcard_email']) : "";
-		$instance['vcard_form'] = strip_tags($new_instance['vcard_form']);
+		$instance['vcard_form'] = isset($new_instance['vcard_form']) ? strip_tags($new_instance['vcard_form']) : "";
 		$instance['vcard_facebook'] = strip_tags($new_instance['vcard_facebook']);
 		$instance['vcard_gplus'] = strip_tags($new_instance['vcard_gplus']);
 		$instance['vcard_linkedin'] = strip_tags($new_instance['vcard_linkedin']);
