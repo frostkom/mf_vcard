@@ -25,7 +25,7 @@ function settings_vcard()
 	add_settings_section($options_area, "", $options_area.'_callback', BASE_OPTIONS_PAGE);
 
 	$arr_settings = array(
-		"setting_vcard_icons" => __("Show icons", 'lang_vcard'),
+		'setting_vcard_icons' => __("Show icons", 'lang_vcard'),
 	);
 
 	foreach($arr_settings as $handle => $text)
