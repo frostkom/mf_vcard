@@ -123,7 +123,7 @@ class widget_vcard extends WP_Widget
 
 				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
 				{
-					echo "<p class='social'>";
+					echo "<p class='social".(isset($instance['vcard_icon_shape']) ? " ".$instance['vcard_icon_shape'] : "")."'>";
 
 						if($instance['vcard_form'] != '')
 						{
@@ -172,6 +172,7 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_city'] = isset($new_instance['vcard_city']) ? strip_tags($new_instance['vcard_city']) : "";
 		$instance['vcard_country'] = isset($new_instance['vcard_country']) ? strip_tags($new_instance['vcard_country']) : "";
 		$instance['vcard_phone'] = strip_tags($new_instance['vcard_phone']);
+		$instance['vcard_icon_shape'] = isset($new_instance['vcard_icon_shape']) ? strip_tags($new_instance['vcard_icon_shape']) : "";
 		$instance['vcard_email'] = isset($new_instance['vcard_email']) ? strip_tags($new_instance['vcard_email']) : "";
 		$instance['vcard_form'] = isset($new_instance['vcard_form']) ? strip_tags($new_instance['vcard_form']) : "";
 		$instance['vcard_facebook'] = strip_tags($new_instance['vcard_facebook']);
@@ -198,6 +199,7 @@ class widget_vcard extends WP_Widget
 			'vcard_city' => "",
 			'vcard_country' => "",
 			'vcard_phone' => "",
+			'vcard_icon_shape' => 'circle',
 			'vcard_email' => get_bloginfo('admin_email'),
 			'vcard_form' => "",
 			'vcard_facebook' => "",
@@ -230,6 +232,13 @@ class widget_vcard extends WP_Widget
 			}
 
 			echo show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone'], 'xtra' => "class='widefat'"));
+
+			$arr_data = array();
+			//$arr_data[''] = "-- ".__("Choose here", 'lang_vcard')." --";
+			$arr_data['rectangle'] = __("Rectangle", 'lang_vcard');
+			$arr_data['circle'] = __("Circle", 'lang_vcard');
+
+			echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_icon_shape'), 'text' => __("Icon Shape", 'lang_vcard'), 'value' => $instance['vcard_icon_shape']));
 
 			if(!($instance['vcard_form'] > 0))
 			{

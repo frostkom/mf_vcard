@@ -1,136 +1,136 @@
 @media all
 {
-	.vcard
+	.vcard .contact a
 	{
-		
+		text-decoration: none;
 	}
 
-		.vcard .contact a
+	.vcard .social .fa
+	{
+		background: #999;
+		border: .2em solid #999;
+		color: #fff;
+		font-size: 1.8em;
+		margin-right: .5em;
+		position: relative;
+	}
+
+		.vcard .social.rectangle .fa
 		{
-			background: rgba(0, 0, 0, .2);
-			border-radius: 2em;
-			color: #fff;
-			display: inline-block;
-			margin-top: .4em;
-			padding: .3em .8em;
-			text-decoration: none;
+			border-radius: .2em;
+			padding: .1em .4em;
 		}
-	
-	.vcard .social
-	{
-		margin-top: .4em;
-	}
 
-		.vcard .social .fa
+		.vcard .social.circle .fa
 		{
-			background: #999;
-			border: .2em solid #999;
 			border-radius: 50%;
-			color: #fff;
-			font-size: 1.8em;
-			margin-right: .5em;
 			padding: .4em;
-			position: relative;
 			transition: all .8s ease;
 		}
 
-			.vcard .social .fa:after
+		.vcard .social.circle .fa:after
+		{
+			border: .1em solid #999;
+			border-radius: 50%;
+			bottom: 0;
+			content: '';
+			left: 0;
+			opacity: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			transform: scale(0);
+			transition: all 1.6s ease;
+		}
+
+			.vcard .social.circle .fa:hover:after
 			{
-				border: .1em solid #999;
-				border-radius: 50%;
-				bottom: 0;
-				content: '';
-				left: 0;
-				opacity: 0;
-				position: absolute;
-				right: 0;
-				top: 0;
-				transform: scale(0);
-				transition: all 1.6s ease;
+				opacity: .4;
+				transform: scale(1);
 			}
 
-				.vcard .social .fa:hover:after
-				{
-					opacity: .4;
-					transform: scale(1);
-				}
+		.vcard .social .fa:hover
+		{
+			background: #fff;
+		}
 
-			.vcard .social .fa:hover
+			.vcard .social.circle .fa:hover
 			{
-				background: #fff;
 				transform: rotate(360deg);
 			}
 
-			.vcard .social .fa-envelope{}
+		.vcard .social .fa-envelope{}
 
-				.vcard .social .fa-envelope:hover
-				{
-					color: #999;
-				}
-
-			.vcard .social .fa-facebook
+			.vcard .social .fa-envelope:hover
 			{
-				background: #3b5998;
-				border-color: #3b5998;
-				padding: .4em .6em;
+				color: #999;
 			}
 
-				.vcard .social .fa-facebook:after
-				{
-					border-color: #3b5998;
-				}
+		.vcard .social .fa-facebook
+		{
+			background: #3b5998;
+			border-color: #3b5998;
+			padding-left: .6em !important;
+			padding-right: .6em !important;
+		}
 
-				.vcard .social .fa-facebook:hover
-				{
-					color: #3b5998;
-				}
-
-			.vcard .social .fa-google-plus
+			.vcard .social .fa-facebook:after
 			{
-				background: #dd4b39;
+				border-color: #3b5998;
+			}
+
+			.vcard .social .fa-facebook:hover
+			{
+				color: #3b5998;
+			}
+
+		.vcard .social .fa-google-plus
+		{
+			background: #dd4b39;
+			border-color: #dd4b39;
+		}
+
+			.vcard .social .fa-google-plus:after
+			{
 				border-color: #dd4b39;
 			}
 
-				.vcard .social .fa-google-plus:after
-				{
-					border-color: #dd4b39;
-				}
-
-				.vcard .social .fa-google-plus:hover
-				{
-					color: #dd4b39;
-				}
-
-			.vcard .social .fa-linkedin
+			.vcard .social .fa-google-plus:hover
 			{
-				background: #007bb6;
-				border-color: #007bb6;
-				padding: .4em .5em;
+				color: #dd4b39;
 			}
 
-				.vcard .social .fa-linkedin:after
-				{
-					border-color: #007bb6;
-				}
+		.vcard .social .fa-linkedin
+		{
+			background: #007bb6;
+			border-color: #007bb6;
+			padding-left: .5em !important;
+			padding-right: .5em !important;
+		}
 
-				.vcard .social .fa-linkedin:hover
-				{
-					color: #007bb6;
-				}
-
-			.vcard .social .fa-twitter
+			.vcard .social .fa-linkedin:after
 			{
-				background: #00aced;
+				border-color: #007bb6;
+			}
+
+			.vcard .social .fa-linkedin:hover
+			{
+				color: #007bb6;
+			}
+
+		.vcard .social .fa-twitter
+		{
+			background: #00aced;
+			border-color: #00aced;
+		}
+
+			.vcard .social .fa-twitter:after
+			{
 				border-color: #00aced;
 			}
 
-				.vcard .social .fa-twitter:after
-				{
-					border-color: #00aced;
-				}
-
-				.vcard .social .fa-twitter:hover
-				{
-					color: #00aced;
-				}
+			.vcard .social .fa-twitter:hover
+			{
+				color: #00aced;
+			}
 }
