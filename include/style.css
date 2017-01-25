@@ -5,6 +5,11 @@
 		text-decoration: none;
 	}
 
+	.vcard .social a
+	{
+		display: inline-block;
+	}
+
 	.vcard .social .fa
 	{
 		background: #999;
