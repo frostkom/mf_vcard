@@ -2,7 +2,7 @@
 
 class widget_vcard extends WP_Widget
 {
-	function widget_vcard()
+	function __construct()
 	{
 		$widget_ops = array(
 			'classname' => 'vcard',
@@ -11,7 +11,7 @@ class widget_vcard extends WP_Widget
 
 		$control_ops = array('id_base' => 'widget-vcard');
 
-		$this->__construct('widget-vcard', __("vCard", 'lang_vcard'), $widget_ops, $control_ops);
+		parent::__construct('widget-vcard', __("vCard", 'lang_vcard'), $widget_ops, $control_ops);
 	}
 
 	function widget($args, $instance)
