@@ -10,132 +10,136 @@
 		display: inline-block;
 	}
 
-	.vcard .social .fa
-	{
-		background: #999;
-		border: .2em solid #999;
-		color: #fff;
-		font-size: 1.8em;
-		margin-right: .5em;
-		position: relative;
-	}
-
-		.vcard .social.rectangle .fa
+		.vcard .social a + a
 		{
-			border-radius: .2em;
-			padding: .1em .4em;
+			margin-left: .5em;
 		}
 
-		.vcard .social.circle .fa
+		.vcard .social .fa
 		{
-			border-radius: 50%;
-			padding: .4em;
-			transition: all .8s ease;
+			background: #999;
+			border: .2em solid #999;
+			color: #fff;
+			font-size: 1.8em;
+			position: relative;
 		}
 
-		.vcard .social.circle .fa:after
-		{
-			border: .1em solid #999;
-			border-radius: 50%;
-			bottom: 0;
-			content: '';
-			left: 0;
-			opacity: 0;
-			position: absolute;
-			right: 0;
-			top: 0;
-			transform: scale(0);
-			transition: all 1.6s ease;
-		}
-
-			.vcard .social.circle .fa:hover:after
+			.vcard .social.rectangle .fa
 			{
-				opacity: .4;
-				transform: scale(1);
+				border-radius: .2em;
+				padding: .1em .4em;
 			}
 
-		.vcard .social .fa:hover
-		{
-			background: #fff;
-		}
-
-			.vcard .social.circle .fa:hover
+			.vcard .social.circle .fa
 			{
-				transform: rotate(360deg);
+				border-radius: 50%;
+				padding: .4em;
+				transition: all .8s ease;
 			}
 
-		.vcard .social .fa-envelope{}
-
-			.vcard .social .fa-envelope:hover
+			.vcard .social.circle .fa:after
 			{
-				color: #999;
+				border: .1em solid #999;
+				border-radius: 50%;
+				bottom: 0;
+				content: '';
+				left: 0;
+				opacity: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				transform: scale(0);
+				transition: all 1.6s ease;
 			}
 
-		.vcard .social .fa-facebook
-		{
-			background: #3b5998;
-			border-color: #3b5998;
-			padding-left: .6em !important;
-			padding-right: .6em !important;
-		}
+				.vcard .social.circle .fa:hover:after
+				{
+					opacity: .4;
+					transform: scale(1);
+				}
 
-			.vcard .social .fa-facebook:after
+			.vcard .social .fa:hover
 			{
+				background: #fff;
+			}
+
+				.vcard .social.circle .fa:hover
+				{
+					transform: rotate(360deg);
+				}
+
+			.vcard .social .fa-envelope{}
+
+				.vcard .social .fa-envelope:hover
+				{
+					color: #999;
+				}
+
+			.vcard .social .fa-facebook
+			{
+				background: #3b5998;
 				border-color: #3b5998;
+				padding-left: .6em !important;
+				padding-right: .6em !important;
 			}
 
-			.vcard .social .fa-facebook:hover
-			{
-				color: #3b5998;
-			}
+				.vcard .social .fa-facebook:after
+				{
+					border-color: #3b5998;
+				}
 
-		.vcard .social .fa-google-plus
-		{
-			background: #dd4b39;
-			border-color: #dd4b39;
-		}
+				.vcard .social .fa-facebook:hover
+				{
+					color: #3b5998;
+				}
 
-			.vcard .social .fa-google-plus:after
+			.vcard .social .fa-google-plus
 			{
+				background: #dd4b39;
 				border-color: #dd4b39;
 			}
 
-			.vcard .social .fa-google-plus:hover
-			{
-				color: #dd4b39;
-			}
+				.vcard .social .fa-google-plus:after
+				{
+					border-color: #dd4b39;
+				}
 
-		.vcard .social .fa-linkedin
-		{
-			background: #007bb6;
-			border-color: #007bb6;
-			padding-left: .5em !important;
-			padding-right: .5em !important;
-		}
+				.vcard .social .fa-google-plus:hover
+				{
+					color: #dd4b39;
+				}
 
-			.vcard .social .fa-linkedin:after
+			.vcard .social .fa-linkedin
 			{
+				background: #007bb6;
 				border-color: #007bb6;
+				padding-left: .5em !important;
+				padding-right: .5em !important;
 			}
 
-			.vcard .social .fa-linkedin:hover
-			{
-				color: #007bb6;
-			}
+				.vcard .social .fa-linkedin:after
+				{
+					border-color: #007bb6;
+				}
 
-		.vcard .social .fa-twitter
-		{
-			background: #00aced;
-			border-color: #00aced;
-		}
+				.vcard .social .fa-linkedin:hover
+				{
+					color: #007bb6;
+				}
 
-			.vcard .social .fa-twitter:after
+			.vcard .social .fa-twitter
 			{
+				background: #00aced;
 				border-color: #00aced;
 			}
 
-			.vcard .social .fa-twitter:hover
-			{
-				color: #00aced;
-			}
+				.vcard .social .fa-twitter:after
+				{
+					border-color: #00aced;
+				}
+
+				.vcard .social .fa-twitter:hover
+				{
+					color: #00aced;
+				}
 }
