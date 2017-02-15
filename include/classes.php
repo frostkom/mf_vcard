@@ -121,7 +121,7 @@ class widget_vcard extends WP_Widget
 					</p>";
 				}
 
-				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
+				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || (isset($instance['vcard_instagram']) && $instance['vcard_instagram'] != '') || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
 				{
 					echo "<p class='social".(isset($instance['vcard_icon_shape']) ? " ".$instance['vcard_icon_shape'] : "")."'>";
 
@@ -140,6 +140,11 @@ class widget_vcard extends WP_Widget
 						if(isset($instance['vcard_gplus']) && $instance['vcard_gplus'] != '')
 						{
 							echo "<a href='//plus.google.com/".$instance['vcard_gplus']."'><i class='fa fa-google-plus'></i></a>";
+						}
+
+						if(isset($instance['vcard_instagram']) && $instance['vcard_instagram'] != '')
+						{
+							echo "<a href='//instagram.com/".$instance['vcard_instagram']."'><i class='fa fa-instagram'></i></a>";
 						}
 
 						if(isset($instance['vcard_linkedin']) && $instance['vcard_linkedin'] != '')
@@ -177,6 +182,7 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_form'] = isset($new_instance['vcard_form']) ? strip_tags($new_instance['vcard_form']) : "";
 		$instance['vcard_facebook'] = strip_tags($new_instance['vcard_facebook']);
 		$instance['vcard_gplus'] = strip_tags($new_instance['vcard_gplus']);
+		$instance['vcard_instagram'] = isset($new_instance['vcard_instagram']) ? strip_tags($new_instance['vcard_instagram']) : "";
 		$instance['vcard_linkedin'] = strip_tags($new_instance['vcard_linkedin']);
 		$instance['vcard_twitter'] = strip_tags($new_instance['vcard_twitter']);
 
@@ -204,6 +210,7 @@ class widget_vcard extends WP_Widget
 			'vcard_form' => "",
 			'vcard_facebook' => "",
 			'vcard_gplus' => "",
+			'vcard_instagram' => "",
 			'vcard_linkedin' => "",
 			'vcard_twitter' => "",
 		);
@@ -258,6 +265,7 @@ class widget_vcard extends WP_Widget
 			
 			echo show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook'], 'xtra' => "class='widefat'"))
 			.show_textfield(array('name' => $this->get_field_name('vcard_gplus'), 'text' => __("Google+", 'lang_vcard'), 'value' => $instance['vcard_gplus'], 'xtra' => "class='widefat'"))
+			.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => __("Instagram", 'lang_vcard'), 'value' => $instance['vcard_instagram'], 'xtra' => "class='widefat'"))
 			.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => __("LinkedIn", 'lang_vcard'), 'value' => $instance['vcard_linkedin'], 'xtra' => "class='widefat'"))
 			.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => __("Twitter", 'lang_vcard'), 'value' => $instance['vcard_twitter'], 'xtra' => "class='widefat'"))
 		."</div>";

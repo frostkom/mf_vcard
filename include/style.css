@@ -63,10 +63,10 @@
 				background: #fff;
 			}
 
-				.vcard .social.circle .fa:hover
+				/*.vcard .social.circle .fa:hover
 				{
 					transform: rotate(360deg);
-				}
+				}*/
 
 			.vcard .social .fa-envelope{}
 
@@ -107,6 +107,24 @@
 				.vcard .social .fa-google-plus:hover
 				{
 					color: #dd4b39;
+				}
+
+			.vcard .social .fa-instagram
+			{
+				background: #c02f2e;
+				border-color: #c02f2e;
+				padding-left: .5em !important;
+				padding-right: .5em !important;
+			}
+
+				.vcard .social .fa-instagram:after
+				{
+					border-color: #c02f2e;
+				}
+
+				.vcard .social .fa-instagram:hover
+				{
+					color: #c02f2e;
 				}
 
 			.vcard .social .fa-linkedin
