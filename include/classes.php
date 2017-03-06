@@ -193,12 +193,10 @@ class widget_vcard extends WP_Widget
 	{
 		global $wpdb;
 
-		$current_user = wp_get_current_user();
-
 		$defaults = array(
 			'vcard_heading' => "",
-			'vcard_name' => $current_user->display_name,
-			'vcard_company' => get_bloginfo('name'),
+			'vcard_name' => "",
+			'vcard_company' => "",
 			'vcard_company_no' => "",
 			'vcard_address' => "",
 			'vcard_zipcode' => "",
@@ -206,7 +204,7 @@ class widget_vcard extends WP_Widget
 			'vcard_country' => "",
 			'vcard_phone' => "",
 			'vcard_icon_shape' => 'circle',
-			'vcard_email' => get_bloginfo('admin_email'),
+			'vcard_email' => "",
 			'vcard_form' => "",
 			'vcard_facebook' => "",
 			'vcard_gplus' => "",
