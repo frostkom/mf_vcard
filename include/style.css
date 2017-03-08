@@ -48,6 +48,7 @@
 				position: absolute;
 				right: 0;
 				top: 0;
+				-webkit-transform: scale(0);
 				transform: scale(0);
 				transition: all 1.6s ease;
 			}
@@ -55,6 +56,7 @@
 				.vcard .social.circle .fa:hover:after
 				{
 					opacity: .4;
+					-webkit-transform: scale(1);
 					transform: scale(1);
 				}
 
@@ -65,6 +67,7 @@
 
 				/*.vcard .social.circle .fa:hover
 				{
+					-webkit-transform: rotate(360deg);
 					transform: rotate(360deg);
 				}*/
 
