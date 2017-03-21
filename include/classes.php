@@ -31,7 +31,7 @@ class widget_vcard extends WP_Widget
 				.$after_title;
 			}
 
-			echo "<div class='vcard'>";
+			//echo "<div class='vcard'>";
 
 				if($instance['vcard_name'] != '')
 				{
@@ -160,8 +160,9 @@ class widget_vcard extends WP_Widget
 					echo "</p>";
 				}
 
-			echo "</div>"
-		.$after_widget;
+			//echo "</div>";
+
+		echo $after_widget;
 	}
 
 	function update($new_instance, $old_instance)
