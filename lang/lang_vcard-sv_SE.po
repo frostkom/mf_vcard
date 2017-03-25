@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 11:28+0100\n"
+"POT-Creation-Date: 2017-03-22 14:18+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Martin Fors\n"
 "Language-Team: \n"
@@ -24,75 +24,79 @@ msgstr "Visa en vCard med valfri information"
 msgid "vCard"
 msgstr ""
 
-#: ../include/classes.php:214
+#: ../include/classes.php:220
 msgid "Heading"
 msgstr "Rubrik"
 
-#: ../include/classes.php:215
+#: ../include/classes.php:221
 msgid "Name"
 msgstr "Namn"
 
-#: ../include/classes.php:216
+#: ../include/classes.php:222
 msgid "Organization"
 msgstr "Företag"
 
-#: ../include/classes.php:220
+#: ../include/classes.php:226
 msgid "Organization Number"
 msgstr "Organisationsnummer"
 
-#: ../include/classes.php:223
+#: ../include/classes.php:229
 msgid "Address"
 msgstr "Adress"
 
-#: ../include/classes.php:228
+#: ../include/classes.php:234
 msgid "Zip Code"
 msgstr "Postnummer"
 
-#: ../include/classes.php:229
+#: ../include/classes.php:235
 msgid "City"
 msgstr "Ort"
 
-#: ../include/classes.php:231
+#: ../include/classes.php:237
 msgid "Country"
 msgstr "Land"
 
-#: ../include/classes.php:234
+#: ../include/classes.php:240
 msgid "Phone Number"
 msgstr "Telefonnummer"
 
-#: ../include/classes.php:238
+#: ../include/classes.php:244
 msgid "Rectangle"
 msgstr "Rektangel"
 
-#: ../include/classes.php:239
+#: ../include/classes.php:245
 msgid "Circle"
 msgstr "Cirkel"
 
-#: ../include/classes.php:241
+#: ../include/classes.php:247
 msgid "Icon Shape"
 msgstr "Form på ikon"
 
-#: ../include/classes.php:245
-msgid "Email"
-msgstr "Epost"
+#: ../include/classes.php:251
+msgid "E-mail"
+msgstr "E-post"
 
-#: ../include/classes.php:255
+#: ../include/classes.php:261
 msgid "E-mail form"
 msgstr "E-postformulär"
 
-#: ../include/classes.php:259
+#: ../include/classes.php:265
 msgid "Facebook"
 msgstr ""
 
-#: ../include/classes.php:260
+#: ../include/classes.php:266
 msgid "Google+"
 msgstr ""
 
-#: ../include/classes.php:261
+#: ../include/classes.php:267
+msgid "Instagram"
+msgstr ""
+
+#: ../include/classes.php:268
 msgid "LinkedIn"
 msgstr ""
 
-#: ../include/classes.php:262
+#: ../include/classes.php:269
 msgid "Twitter"
 msgstr ""
 

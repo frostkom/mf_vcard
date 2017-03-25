@@ -248,7 +248,7 @@ class widget_vcard extends WP_Widget
 
 			if(!($instance['vcard_form'] > 0))
 			{
-				echo show_textfield(array('name' => $this->get_field_name('vcard_email'), 'text' => __("Email", 'lang_vcard'), 'value' => $instance['vcard_email'], 'xtra' => "class='widefat'"));
+				echo show_textfield(array('name' => $this->get_field_name('vcard_email'), 'text' => __("E-mail", 'lang_vcard'), 'value' => $instance['vcard_email'], 'xtra' => "class='widefat'"));
 			}
 
 			if($instance['vcard_email'] == '' && is_plugin_active("mf_form/index.php"))
