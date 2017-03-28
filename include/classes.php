@@ -226,21 +226,20 @@ class widget_vcard extends WP_Widget
 				echo show_textfield(array('name' => $this->get_field_name('vcard_company_no'), 'text' => __("Organization Number", 'lang_vcard'), 'value' => $instance['vcard_company_no'], 'xtra' => "class='widefat'"));
 			}
 
-			echo show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Address", 'lang_vcard'), 'value' => $instance['vcard_address'], 'xtra' => "class='widefat'"));
-
-			if($instance['vcard_address'] != '')
-			{
-				echo "<div class='flex_flow'>"
+			$is_toggler_open = $instance['vcard_address'] != '' || $instance['vcard_zipcode'] != '' || $instance['vcard_city'] != '' || $instance['vcard_country'] != '';
+			
+			echo "<label class='toggler".($is_toggler_open ? " open" : "")."'><i class='fa fa-lg ".($is_toggler_open ? "fa-caret-down" : "fa-caret-right")."'></i><span>".__("Address", 'lang_vcard')."</span></label>
+			<div class='toggle_container".($is_toggler_open ? "" : " hide")."'>"
+				.show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Street Address", 'lang_vcard'), 'value' => $instance['vcard_address'], 'xtra' => "class='widefat'"))
+				."<div class='flex_flow'>"
 					.show_textfield(array('name' => $this->get_field_name('vcard_zipcode'), 'text' => __("Zip Code", 'lang_vcard'), 'value' => $instance['vcard_zipcode'], 'xtra' => "class='widefat'"))
 					.show_textfield(array('name' => $this->get_field_name('vcard_city'), 'text' => __("City", 'lang_vcard'), 'value' => $instance['vcard_city'], 'xtra' => "class='widefat'"))
 				."</div>"
-				.show_textfield(array('name' => $this->get_field_name('vcard_country'), 'text' => __("Country", 'lang_vcard'), 'value' => $instance['vcard_country'], 'xtra' => "class='widefat'"));
-			}
-
-			echo show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone'], 'xtra' => "class='widefat'"));
+				.show_textfield(array('name' => $this->get_field_name('vcard_country'), 'text' => __("Country", 'lang_vcard'), 'value' => $instance['vcard_country'], 'xtra' => "class='widefat'"))
+			."</div>"
+			.show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone'], 'xtra' => "class='widefat'"));
 
 			$arr_data = array();
-			//$arr_data[''] = "-- ".__("Choose here", 'lang_vcard')." --";
 			$arr_data['rectangle'] = __("Rectangle", 'lang_vcard');
 			$arr_data['circle'] = __("Circle", 'lang_vcard');
 
@@ -261,12 +260,17 @@ class widget_vcard extends WP_Widget
 					echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'value' => $instance['vcard_form']));
 				}
 			}
-			
-			echo show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook'], 'xtra' => "class='widefat'"))
-			.show_textfield(array('name' => $this->get_field_name('vcard_gplus'), 'text' => __("Google+", 'lang_vcard'), 'value' => $instance['vcard_gplus'], 'xtra' => "class='widefat'"))
-			.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => __("Instagram", 'lang_vcard'), 'value' => $instance['vcard_instagram'], 'xtra' => "class='widefat'"))
-			.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => __("LinkedIn", 'lang_vcard'), 'value' => $instance['vcard_linkedin'], 'xtra' => "class='widefat'"))
-			.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => __("Twitter", 'lang_vcard'), 'value' => $instance['vcard_twitter'], 'xtra' => "class='widefat'"))
+
+			$is_toggler_open = $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '';
+
+			echo "<label class='toggler".($is_toggler_open ? " open" : "")."'><i class='fa fa-lg ".($is_toggler_open ? "fa-caret-down" : "fa-caret-right")."'></i><span>".__("Social Media", 'lang_vcard')."</span></label>
+			<div class='toggle_container".($is_toggler_open ? "" : " hide")."'>"
+				.show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook'], 'xtra' => "class='widefat'"))
+				.show_textfield(array('name' => $this->get_field_name('vcard_gplus'), 'text' => __("Google+", 'lang_vcard'), 'value' => $instance['vcard_gplus'], 'xtra' => "class='widefat'"))
+				.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => __("Instagram", 'lang_vcard'), 'value' => $instance['vcard_instagram'], 'xtra' => "class='widefat'"))
+				.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => __("LinkedIn", 'lang_vcard'), 'value' => $instance['vcard_linkedin'], 'xtra' => "class='widefat'"))
+				.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => __("Twitter", 'lang_vcard'), 'value' => $instance['vcard_twitter'], 'xtra' => "class='widefat'"))
+			."</div>"
 		."</div>";
 	}
 }
