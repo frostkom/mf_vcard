@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-28 13:56+0100\n"
+"POT-Creation-Date: 2017-03-29 16:56+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Martin Fors\n"
 "Language-Team: \n"
@@ -40,71 +40,71 @@ msgstr "Företag"
 msgid "Organization Number"
 msgstr "Organisationsnummer"
 
-#: ../include/classes.php:231
+#: ../include/classes.php:233
 msgid "Address"
 msgstr "Adress"
 
-#: ../include/classes.php:233
+#: ../include/classes.php:234
 msgid "Street Address"
 msgstr "Gatuadress"
 
-#: ../include/classes.php:235
+#: ../include/classes.php:236
 msgid "Zip Code"
 msgstr "Postnummer"
 
-#: ../include/classes.php:236
+#: ../include/classes.php:237
 msgid "City"
 msgstr "Ort"
 
-#: ../include/classes.php:238
+#: ../include/classes.php:239
 msgid "Country"
 msgstr "Land"
 
-#: ../include/classes.php:240
+#: ../include/classes.php:242
 msgid "Phone Number"
 msgstr "Telefonnummer"
 
-#: ../include/classes.php:243
+#: ../include/classes.php:245
 msgid "Rectangle"
 msgstr "Rektangel"
 
-#: ../include/classes.php:244
+#: ../include/classes.php:246
 msgid "Circle"
 msgstr "Cirkel"
 
-#: ../include/classes.php:246
+#: ../include/classes.php:248
 msgid "Icon Shape"
 msgstr "Form på ikon"
 
-#: ../include/classes.php:250
+#: ../include/classes.php:252
 msgid "E-mail"
 msgstr "E-post"
 
-#: ../include/classes.php:260
+#: ../include/classes.php:262
 msgid "E-mail form"
 msgstr "E-postformulär"
 
-#: ../include/classes.php:266
+#: ../include/classes.php:270
 msgid "Social Media"
-msgstr ""
+msgstr "Sociala medier"
 
-#: ../include/classes.php:268
+#: ../include/classes.php:271
 msgid "Facebook"
 msgstr ""
 
-#: ../include/classes.php:269
+#: ../include/classes.php:272
 msgid "Google+"
 msgstr ""
 
-#: ../include/classes.php:270
+#: ../include/classes.php:273
 msgid "Instagram"
 msgstr ""
 
-#: ../include/classes.php:271
+#: ../include/classes.php:274
 msgid "LinkedIn"
 msgstr ""
 
-#: ../include/classes.php:272
+#: ../include/classes.php:275
 msgid "Twitter"
 msgstr ""
 
