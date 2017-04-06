@@ -227,7 +227,7 @@ class widget_vcard extends WP_Widget
 			}
 
 			$is_toggler_open = $instance['vcard_address'] != '' || $instance['vcard_zipcode'] != '' || $instance['vcard_city'] != '' || $instance['vcard_country'] != '';
-			
+
 			echo get_toggler_container(array('type' => 'start', 'open' => $is_toggler_open, 'text' => __("Address", 'lang_vcard')))
 				.show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Street Address", 'lang_vcard'), 'value' => $instance['vcard_address'], 'xtra' => "class='widefat'"))
 				."<div class='flex_flow'>"
