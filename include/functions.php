@@ -4,7 +4,7 @@ function init_vcard()
 {
 	if(!is_admin())
 	{
-		wp_enqueue_style('style_vcard', plugin_dir_url(__FILE__)."style.css");
+		mf_enqueue_style('style_vcard', plugin_dir_url(__FILE__)."style.css", get_plugin_version(__FILE__));
 	}
 }
 
