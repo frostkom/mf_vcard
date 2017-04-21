@@ -227,13 +227,13 @@ class widget_vcard extends WP_Widget
 		$instance = wp_parse_args((array)$instance, $defaults);
 
 		echo "<div class='mf_form'>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_heading'), 'text' => __("Heading", 'lang_vcard'), 'value' => $instance['vcard_heading'], 'xtra' => "class='widefat'"))
-			.show_textfield(array('name' => $this->get_field_name('vcard_name'), 'text' => __("Name", 'lang_vcard'), 'value' => $instance['vcard_name'], 'xtra' => "class='widefat'"))
-			.show_textfield(array('name' => $this->get_field_name('vcard_company'), 'text' => __("Organization", 'lang_vcard'), 'value' => $instance['vcard_company'], 'xtra' => "class='widefat'"));
+			.show_textfield(array('name' => $this->get_field_name('vcard_heading'), 'text' => __("Heading", 'lang_vcard'), 'value' => $instance['vcard_heading']))
+			.show_textfield(array('name' => $this->get_field_name('vcard_name'), 'text' => __("Name", 'lang_vcard'), 'value' => $instance['vcard_name']))
+			.show_textfield(array('name' => $this->get_field_name('vcard_company'), 'text' => __("Organization", 'lang_vcard'), 'value' => $instance['vcard_company']));
 
 			if($instance['vcard_company'] != '')
 			{
-				echo show_textfield(array('name' => $this->get_field_name('vcard_company_no'), 'text' => __("Organization Number", 'lang_vcard'), 'value' => $instance['vcard_company_no'], 'xtra' => "class='widefat'"));
+				echo show_textfield(array('name' => $this->get_field_name('vcard_company_no'), 'text' => __("Organization Number", 'lang_vcard'), 'value' => $instance['vcard_company_no']));
 			}
 
 			$is_toggler_open = $instance['vcard_address'] != '' || $instance['vcard_zipcode'] != '' || $instance['vcard_city'] != '' || $instance['vcard_country'] != '';
@@ -245,14 +245,14 @@ class widget_vcard extends WP_Widget
 					echo show_select(array('data' => get_yes_no_for_select(), 'name' => $this->get_field_name('vcard_map'), 'text' => __("Show Map", 'lang_vcard'), 'value' => $instance['vcard_map']));
 				}*/
 
-				echo show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Street Address", 'lang_vcard'), 'value' => $instance['vcard_address'], 'xtra' => "class='widefat'"))
+				echo show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Street Address", 'lang_vcard'), 'value' => $instance['vcard_address']))
 				."<div class='flex_flow'>"
-					.show_textfield(array('name' => $this->get_field_name('vcard_zipcode'), 'text' => __("Zip Code", 'lang_vcard'), 'value' => $instance['vcard_zipcode'], 'xtra' => "class='widefat'"))
-					.show_textfield(array('name' => $this->get_field_name('vcard_city'), 'text' => __("City", 'lang_vcard'), 'value' => $instance['vcard_city'], 'xtra' => "class='widefat'"))
+					.show_textfield(array('name' => $this->get_field_name('vcard_zipcode'), 'text' => __("Zip Code", 'lang_vcard'), 'value' => $instance['vcard_zipcode']))
+					.show_textfield(array('name' => $this->get_field_name('vcard_city'), 'text' => __("City", 'lang_vcard'), 'value' => $instance['vcard_city']))
 				."</div>"
-				.show_textfield(array('name' => $this->get_field_name('vcard_country'), 'text' => __("Country", 'lang_vcard'), 'value' => $instance['vcard_country'], 'xtra' => "class='widefat'"))
+				.show_textfield(array('name' => $this->get_field_name('vcard_country'), 'text' => __("Country", 'lang_vcard'), 'value' => $instance['vcard_country']))
 			.get_toggler_container(array('type' => 'end'))
-			.show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone'], 'xtra' => "class='widefat'"));
+			.show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone']));
 
 			$arr_data = array();
 			$arr_data['rectangle'] = __("Rectangle", 'lang_vcard');
@@ -262,7 +262,7 @@ class widget_vcard extends WP_Widget
 
 			if(!($instance['vcard_form'] > 0))
 			{
-				echo show_textfield(array('name' => $this->get_field_name('vcard_email'), 'text' => __("E-mail", 'lang_vcard'), 'value' => $instance['vcard_email'], 'xtra' => "class='widefat'"));
+				echo show_textfield(array('name' => $this->get_field_name('vcard_email'), 'text' => __("E-mail", 'lang_vcard'), 'value' => $instance['vcard_email']));
 			}
 
 			if($instance['vcard_email'] == '' && is_plugin_active("mf_form/index.php"))
@@ -279,11 +279,11 @@ class widget_vcard extends WP_Widget
 			$is_toggler_open = $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '';
 
 			echo get_toggler_container(array('type' => 'start', 'open' => $is_toggler_open, 'text' => __("Social Media", 'lang_vcard')))
-				.show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook'], 'xtra' => "class='widefat'"))
-				.show_textfield(array('name' => $this->get_field_name('vcard_gplus'), 'text' => __("Google+", 'lang_vcard'), 'value' => $instance['vcard_gplus'], 'xtra' => "class='widefat'"))
-				.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => __("Instagram", 'lang_vcard'), 'value' => $instance['vcard_instagram'], 'xtra' => "class='widefat'"))
-				.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => __("LinkedIn", 'lang_vcard'), 'value' => $instance['vcard_linkedin'], 'xtra' => "class='widefat'"))
-				.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => __("Twitter", 'lang_vcard'), 'value' => $instance['vcard_twitter'], 'xtra' => "class='widefat'"))
+				.show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook']))
+				.show_textfield(array('name' => $this->get_field_name('vcard_gplus'), 'text' => __("Google+", 'lang_vcard'), 'value' => $instance['vcard_gplus']))
+				.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => __("Instagram", 'lang_vcard'), 'value' => $instance['vcard_instagram']))
+				.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => __("LinkedIn", 'lang_vcard'), 'value' => $instance['vcard_linkedin']))
+				.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => __("Twitter", 'lang_vcard'), 'value' => $instance['vcard_twitter']))
 			.get_toggler_container(array('type' => 'end'))
 		."</div>";
 	}
