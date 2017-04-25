@@ -31,7 +31,7 @@ class widget_vcard extends WP_Widget
 				.$after_title;
 			}
 
-			echo "<div class='content'>";
+			echo "<div class='section'>";
 
 				if($instance['vcard_name'] != '')
 				{
