@@ -66,7 +66,7 @@ class widget_vcard extends WP_Widget
 
 								if(isset($instance['vcard_map']) && $instance['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php"))
 								{
-									echo get_toggler_container(array('type' => 'start', 'text' => $instance['vcard_address']))
+									echo get_toggler_container(array('type' => 'start', 'icon_first' => false, 'text' => $instance['vcard_address']))
 										.get_map(array('input' => $instance['vcard_address']." ".$instance['vcard_city']))
 									.get_toggler_container(array('type' => 'end'));
 								}
@@ -246,10 +246,10 @@ class widget_vcard extends WP_Widget
 
 			echo get_toggler_container(array('type' => 'start', 'open' => $is_toggler_open, 'text' => __("Address", 'lang_vcard')));
 
-				/*if(is_plugin_active("mf_maps/index.php"))
+				if(is_plugin_active("mf_maps/index.php"))
 				{
 					echo show_select(array('data' => get_yes_no_for_select(), 'name' => $this->get_field_name('vcard_map'), 'text' => __("Show Map", 'lang_vcard'), 'value' => $instance['vcard_map']));
-				}*/
+				}
 
 				echo show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Street Address", 'lang_vcard'), 'value' => $instance['vcard_address']))
 				."<div class='flex_flow'>"
