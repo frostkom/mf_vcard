@@ -1,10 +1,5 @@
 @media all
 {
-	/*.vcard .contact a
-	{
-		text-decoration: none;
-	}*/
-
 	.vcard .social a
 	{
 		display: inline-block;
@@ -64,12 +59,6 @@
 			{
 				background: #fff;
 			}
-
-				/*.vcard .social.circle .fa:hover
-				{
-					-webkit-transform: rotate(360deg);
-					transform: rotate(360deg);
-				}*/
 
 			.vcard .social .fa-envelope{}
 
