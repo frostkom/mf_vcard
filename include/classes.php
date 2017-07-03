@@ -199,6 +199,12 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_linkedin'] = strip_tags($new_instance['vcard_linkedin']);
 		$instance['vcard_twitter'] = strip_tags($new_instance['vcard_twitter']);
 
+		$instance['vcard_facebook'] = filter_social_url($instance['vcard_facebook']);
+		$instance['vcard_gplus'] = filter_social_url($instance['vcard_gplus']);
+		$instance['vcard_instagram'] = filter_social_url($instance['vcard_instagram']);
+		$instance['vcard_linkedin'] = filter_social_url($instance['vcard_linkedin']);
+		$instance['vcard_twitter'] = filter_social_url($instance['vcard_twitter']);
+
 		return $instance;
 	}
 

@@ -1,5 +1,17 @@
 <?php
 
+function filter_social_url($in)
+{
+	if(preg_match("/\//", $in))
+	{
+		$arr_url = explode("/", $in);
+
+		$in = $arr_url[count($arr_url) - 1];
+	}
+
+	return $in;
+}
+
 function init_vcard()
 {
 	if(!is_admin())
