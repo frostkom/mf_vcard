@@ -115,10 +115,13 @@ class widget_vcard extends WP_Widget
 
 				if($instance['vcard_phone'] != '')
 				{
-					echo "<p class='contact tel'>
+					$show_number = !isset($instance['vcard_phone_show_number']) || $instance['vcard_phone_show_number'] == 'yes';
+
+					echo "<p class='contact tel".($show_number ? "" : " hide_number")."'>
 						<a href='".format_phone_no($instance['vcard_phone'])."' class='value'>"
-							.($setting_vcard_icons ? "<i class='fa fa-phone'></i> " : "")
-							.$instance['vcard_phone']
+							.($setting_vcard_icons || !$show_number ? "<i class='fa fa-phone'></i> " : "")
+							."<span".($show_number ? "" : " class='hide'").">".$instance['vcard_phone']."</span>"
+							."<span".($show_number ? " class='hide'" : "").">".shorten_text(array('string' => $instance['vcard_phone'], 'limit' => 5))."</span>"
 						."</a>
 					</p>";
 				}
@@ -190,6 +193,7 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_city'] = isset($new_instance['vcard_city']) ? strip_tags($new_instance['vcard_city']) : "";
 		$instance['vcard_country'] = isset($new_instance['vcard_country']) ? strip_tags($new_instance['vcard_country']) : "";
 		$instance['vcard_phone'] = strip_tags($new_instance['vcard_phone']);
+		$instance['vcard_phone_show_number'] = isset($new_instance['vcard_phone_show_number']) ? strip_tags($new_instance['vcard_phone_show_number']) : 'yes';
 		$instance['vcard_icon_shape'] = isset($new_instance['vcard_icon_shape']) ? strip_tags($new_instance['vcard_icon_shape']) : "";
 		$instance['vcard_email'] = isset($new_instance['vcard_email']) ? strip_tags($new_instance['vcard_email']) : "";
 		$instance['vcard_form'] = isset($new_instance['vcard_form']) ? strip_tags($new_instance['vcard_form']) : "";
@@ -223,6 +227,7 @@ class widget_vcard extends WP_Widget
 			'vcard_city' => "",
 			'vcard_country' => "",
 			'vcard_phone' => "",
+			'vcard_phone_show_number' => 'yes',
 			'vcard_icon_shape' => 'circle',
 			'vcard_email' => "",
 			'vcard_form' => "",
@@ -270,6 +275,11 @@ class widget_vcard extends WP_Widget
 
 			echo get_toggler_container(array('type' => 'end'))
 			.show_textfield(array('name' => $this->get_field_name('vcard_phone'), 'text' => __("Phone Number", 'lang_vcard'), 'value' => $instance['vcard_phone']));
+
+			if($instance['vcard_phone'] != '')
+			{
+				echo show_select(array('data' => get_yes_no_for_select(), 'name' => $this->get_field_name('vcard_phone_show_number'), 'text' => __("Show Full Number", 'lang_vcard'), 'value' => $instance['vcard_phone_show_number']));
+			}
 
 			$arr_data = array();
 			$arr_data['rectangle'] = __("Rectangle", 'lang_vcard');
