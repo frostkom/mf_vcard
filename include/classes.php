@@ -295,7 +295,7 @@ class widget_vcard extends WP_Widget
 			if($instance['vcard_email'] == '' && is_plugin_active("mf_form/index.php"))
 			{
 				$obj_form = new mf_form();
-				$arr_data = $obj_form->get_form_array();
+				$arr_data = $obj_form->get_form_array(array('local_only' => true));
 
 				if(count($arr_data) > 1)
 				{
