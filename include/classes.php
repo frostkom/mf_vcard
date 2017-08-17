@@ -140,11 +140,14 @@ class widget_vcard extends WP_Widget
 				{
 					echo "<p class='social".(isset($instance['vcard_icon_shape']) ? " ".$instance['vcard_icon_shape'] : "")."'>";
 
-						if($instance['vcard_form'] != '')
+						if($instance['vcard_form'] > 0)
 						{
 							$form_url = get_form_url($instance['vcard_form']);
 
-							echo "<a href='".$form_url."'><i class='fa fa-envelope'></i></a>";
+							if($form_url != '' && $form_url != '#')
+							{
+								echo "<a href='".$form_url."' rel='".$instance['vcard_form']."'><i class='fa fa-envelope'></i></a>";
+							}
 						}
 
 						if(isset($instance['vcard_facebook']) && $instance['vcard_facebook'] != '')
