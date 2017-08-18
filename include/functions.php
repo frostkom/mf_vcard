@@ -4,7 +4,7 @@ function filter_social_url($in)
 {
 	if(preg_match("/\//", $in))
 	{
-		$arr_url = explode("/", $in);
+		$arr_url = explode("/", trim($in, "/"));
 
 		$in = $arr_url[count($arr_url) - 1];
 	}
