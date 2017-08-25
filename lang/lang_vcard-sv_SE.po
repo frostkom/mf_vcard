@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-18 13:24+0100\n"
+"POT-Creation-Date: 2017-08-25 16:14+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Martin Fors\n"
 "Language-Team: \n"
@@ -20,7 +20,7 @@ msgid "Display a vCard with custom information"
 msgstr "Visa en vCard med valfri information"
 
 #: ../include/classes.php:14
-#: ../include/functions.php:46
+#: ../include/functions.php:48
 msgid "vCard"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Twitter"
 msgstr ""
 
-#: ../include/functions.php:36
+#: ../include/functions.php:38
 msgid "Show icons"
 msgstr "Visa ikoner"
 

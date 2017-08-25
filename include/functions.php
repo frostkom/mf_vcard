@@ -16,8 +16,10 @@ function init_vcard()
 {
 	if(!is_admin())
 	{
-		mf_enqueue_style('style_vcard', plugin_dir_url(__FILE__)."style.css", get_plugin_version(__FILE__));
-		mf_enqueue_script('script_vcard', plugin_dir_url(__FILE__)."script.js", get_plugin_version(__FILE__));
+		$plugin_version = get_plugin_version(__FILE__);
+
+		mf_enqueue_style('style_vcard', plugin_dir_url(__FILE__)."style.css", $plugin_version);
+		mf_enqueue_script('script_vcard', plugin_dir_url(__FILE__)."script.js", $plugin_version);
 	}
 }
 
