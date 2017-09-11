@@ -9,16 +9,36 @@ class widget_vcard extends WP_Widget
 			'description' => __("Display a vCard with custom information", 'lang_vcard')
 		);
 
-		$control_ops = array('id_base' => 'widget-vcard');
+		$this->arr_default = array(
+			'vcard_heading' => "",
+			'vcard_name' => "",
+			'vcard_company' => "",
+			'vcard_company_no' => "",
+			'vcard_map' => 'no',
+			'vcard_address' => "",
+			'vcard_zipcode' => "",
+			'vcard_city' => "",
+			'vcard_country' => "",
+			'vcard_phone' => "",
+			'vcard_phone_show_number' => 'yes',
+			'vcard_icon_shape' => 'circle',
+			'vcard_email' => "",
+			'vcard_form' => "",
+			'vcard_facebook' => "",
+			'vcard_gplus' => "",
+			'vcard_instagram' => "",
+			'vcard_linkedin' => "",
+			'vcard_twitter' => "",
+		);
 
-		parent::__construct('widget-vcard', __("vCard", 'lang_vcard'), $widget_ops, $control_ops);
+		parent::__construct('widget-vcard', __("vCard", 'lang_vcard'), $widget_ops);
 	}
 
 	function widget($args, $instance)
 	{
-		global $wpdb;
-
 		extract($args);
+
+		$instance = wp_parse_args((array)$instance, $this->arr_default);
 
 		$setting_vcard_icons = get_option('setting_vcard_icons');
 
@@ -47,7 +67,7 @@ class widget_vcard extends WP_Widget
 						.($setting_vcard_icons ? "<i class='fa fa-building'></i> " : "")
 						.$instance['vcard_company'];
 
-						if(isset($instance['vcard_company_no']) && $instance['vcard_company_no'] != '')
+						if($instance['vcard_company_no'] != '')
 						{
 							echo " <span>(".$instance['vcard_company_no'].")</span>";
 						}
@@ -64,7 +84,7 @@ class widget_vcard extends WP_Widget
 							echo "<p class='street-address'>"
 								.($setting_vcard_icons ? "<i class='fa fa-envelope-o'></i> " : "");
 
-								if(isset($instance['vcard_map']) && $instance['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php"))
+								if($instance['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php"))
 								{
 									echo get_toggler_container(array('type' => 'start', 'icon_first' => false, 'text' => $instance['vcard_address']))
 										.get_map(array('input' => $instance['vcard_address']." ".$instance['vcard_city']))
@@ -115,7 +135,7 @@ class widget_vcard extends WP_Widget
 
 				if($instance['vcard_phone'] != '')
 				{
-					$show_number = !isset($instance['vcard_phone_show_number']) || $instance['vcard_phone_show_number'] == 'yes';
+					$show_number = $instance['vcard_phone_show_number'] == 'yes';
 
 					echo "<p class='contact tel".($show_number ? "" : " hide_number")."'>
 						<a href='".format_phone_no($instance['vcard_phone'])."' class='value'>"
@@ -136,9 +156,9 @@ class widget_vcard extends WP_Widget
 					</p>";
 				}
 
-				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || (isset($instance['vcard_instagram']) && $instance['vcard_instagram'] != '') || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
+				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
 				{
-					echo "<p class='social".(isset($instance['vcard_icon_shape']) ? " ".$instance['vcard_icon_shape'] : "")."'>";
+					echo "<p class='social".($instance['vcard_icon_shape'] != '' ? " ".$instance['vcard_icon_shape'] : "")."'>";
 
 						if($instance['vcard_form'] > 0)
 						{
@@ -150,27 +170,27 @@ class widget_vcard extends WP_Widget
 							}
 						}
 
-						if(isset($instance['vcard_facebook']) && $instance['vcard_facebook'] != '')
+						if($instance['vcard_facebook'] != '')
 						{
 							echo "<a href='//facebook.com/".$instance['vcard_facebook']."'><i class='fa fa-facebook'></i></a>";
 						}
 
-						if(isset($instance['vcard_gplus']) && $instance['vcard_gplus'] != '')
+						if($instance['vcard_gplus'] != '')
 						{
 							echo "<a href='//plus.google.com/".$instance['vcard_gplus']."'><i class='fa fa-google-plus'></i></a>";
 						}
 
-						if(isset($instance['vcard_instagram']) && $instance['vcard_instagram'] != '')
+						if($instance['vcard_instagram'] != '')
 						{
 							echo "<a href='//instagram.com/".$instance['vcard_instagram']."'><i class='fa fa-instagram'></i></a>";
 						}
 
-						if(isset($instance['vcard_linkedin']) && $instance['vcard_linkedin'] != '')
+						if($instance['vcard_linkedin'] != '')
 						{
 							echo "<a href='//linkedin.com/in/".$instance['vcard_linkedin']."'><i class='fa fa-linkedin'></i></a>";
 						}
 
-						if(isset($instance['vcard_twitter']) && $instance['vcard_twitter'] != '')
+						if($instance['vcard_twitter'] != '')
 						{
 							echo "<a href='//twitter.com/".$instance['vcard_twitter']."'><i class='fa fa-twitter'></i></a>";
 						}
@@ -186,23 +206,25 @@ class widget_vcard extends WP_Widget
 	{
 		$instance = $old_instance;
 
+		$new_instance = wp_parse_args((array)$new_instance, $this->arr_default);
+
 		$instance['vcard_heading'] = strip_tags($new_instance['vcard_heading']);
 		$instance['vcard_name'] = strip_tags($new_instance['vcard_name']);
 		$instance['vcard_company'] = strip_tags($new_instance['vcard_company']);
-		$instance['vcard_company_no'] = isset($new_instance['vcard_company_no']) ? strip_tags($new_instance['vcard_company_no']) : "";
-		$instance['vcard_map'] = isset($new_instance['vcard_map']) ? strip_tags($new_instance['vcard_map']) : "";
+		$instance['vcard_company_no'] = strip_tags($new_instance['vcard_company_no']);
+		$instance['vcard_map'] = strip_tags($new_instance['vcard_map']);
 		$instance['vcard_address'] = strip_tags($new_instance['vcard_address']);
-		$instance['vcard_zipcode'] = isset($new_instance['vcard_zipcode']) ? strip_tags($new_instance['vcard_zipcode']) : "";
-		$instance['vcard_city'] = isset($new_instance['vcard_city']) ? strip_tags($new_instance['vcard_city']) : "";
-		$instance['vcard_country'] = isset($new_instance['vcard_country']) ? strip_tags($new_instance['vcard_country']) : "";
+		$instance['vcard_zipcode'] = strip_tags($new_instance['vcard_zipcode']);
+		$instance['vcard_city'] = strip_tags($new_instance['vcard_city']);
+		$instance['vcard_country'] = strip_tags($new_instance['vcard_country']);
 		$instance['vcard_phone'] = strip_tags($new_instance['vcard_phone']);
-		$instance['vcard_phone_show_number'] = isset($new_instance['vcard_phone_show_number']) ? strip_tags($new_instance['vcard_phone_show_number']) : 'yes';
-		$instance['vcard_icon_shape'] = isset($new_instance['vcard_icon_shape']) ? strip_tags($new_instance['vcard_icon_shape']) : "";
-		$instance['vcard_email'] = isset($new_instance['vcard_email']) ? strip_tags($new_instance['vcard_email']) : "";
-		$instance['vcard_form'] = isset($new_instance['vcard_form']) ? strip_tags($new_instance['vcard_form']) : "";
+		$instance['vcard_phone_show_number'] = strip_tags($new_instance['vcard_phone_show_number']);
+		$instance['vcard_icon_shape'] = strip_tags($new_instance['vcard_icon_shape']);
+		$instance['vcard_email'] = strip_tags($new_instance['vcard_email']);
+		$instance['vcard_form'] = strip_tags($new_instance['vcard_form']);
 		$instance['vcard_facebook'] = strip_tags($new_instance['vcard_facebook']);
 		$instance['vcard_gplus'] = strip_tags($new_instance['vcard_gplus']);
-		$instance['vcard_instagram'] = isset($new_instance['vcard_instagram']) ? strip_tags($new_instance['vcard_instagram']) : "";
+		$instance['vcard_instagram'] = strip_tags($new_instance['vcard_instagram']);
 		$instance['vcard_linkedin'] = strip_tags($new_instance['vcard_linkedin']);
 		$instance['vcard_twitter'] = strip_tags($new_instance['vcard_twitter']);
 
@@ -217,31 +239,7 @@ class widget_vcard extends WP_Widget
 
 	function form($instance)
 	{
-		global $wpdb;
-
-		$defaults = array(
-			'vcard_heading' => "",
-			'vcard_name' => "",
-			'vcard_company' => "",
-			'vcard_company_no' => "",
-			'vcard_map' => 'no',
-			'vcard_address' => "",
-			'vcard_zipcode' => "",
-			'vcard_city' => "",
-			'vcard_country' => "",
-			'vcard_phone' => "",
-			'vcard_phone_show_number' => 'yes',
-			'vcard_icon_shape' => 'circle',
-			'vcard_email' => "",
-			'vcard_form' => "",
-			'vcard_facebook' => "",
-			'vcard_gplus' => "",
-			'vcard_instagram' => "",
-			'vcard_linkedin' => "",
-			'vcard_twitter' => "",
-		);
-
-		$instance = wp_parse_args((array)$instance, $defaults);
+		$instance = wp_parse_args((array)$instance, $this->arr_default);
 
 		echo "<div class='mf_form'>"
 			.show_textfield(array('name' => $this->get_field_name('vcard_heading'), 'text' => __("Heading", 'lang_vcard'), 'value' => $instance['vcard_heading']))
