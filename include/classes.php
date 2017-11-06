@@ -137,8 +137,8 @@ class widget_vcard extends WP_Widget
 				{
 					$show_number = $instance['vcard_phone_show_number'] == 'yes';
 
-					echo "<p class='contact tel".($show_number ? "" : " hide_number")."'>
-						<a href='".format_phone_no($instance['vcard_phone'])."' class='value'>"
+					echo "<p class='contact tel'>
+						<a href='".format_phone_no($instance['vcard_phone'])."' class='value".($show_number ? "" : " hide_number")."'>"
 							.($setting_vcard_icons || !$show_number ? "<i class='fa fa-phone'></i> " : "")
 							."<span".($show_number ? "" : " class='hide'").">".$instance['vcard_phone']."</span>"
 							."<span".($show_number ? " class='hide'" : "").">".shorten_text(array('string' => $instance['vcard_phone'], 'limit' => 5))."</span>"

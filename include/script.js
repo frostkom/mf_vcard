@@ -1,6 +1,6 @@
 jQuery(function($)
 {
-	$(document).on('click', '.vcard .contact.tel.hide_number', function()
+	$(document).on('click', '.vcard .contact.tel .hide_number', function()
 	{
 		$(this).find('span.hide').removeClass('hide').siblings('span').addClass('hide');
 
