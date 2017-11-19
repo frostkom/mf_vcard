@@ -23,6 +23,7 @@ class widget_vcard extends WP_Widget
 			'vcard_phone_show_number' => 'yes',
 			'vcard_icon_shape' => 'circle',
 			'vcard_email' => "",
+			'vcard_url' => "",
 			'vcard_form' => "",
 			'vcard_facebook' => "",
 			'vcard_gplus' => "",
@@ -156,6 +157,16 @@ class widget_vcard extends WP_Widget
 					</p>";
 				}
 
+				if($instance['vcard_url'] != '')
+				{
+					echo "<p class='contact url'>
+						<a href='".$instance['vcard_url']."' class='value'>"
+							.($setting_vcard_icons ? "<i class='fa fa-globe'></i> " : "")
+							.mf_clean_url($instance['vcard_url'])
+						."</a>
+					</p>";
+				}
+
 				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
 				{
 					echo "<p class='social".($instance['vcard_icon_shape'] != '' ? " ".$instance['vcard_icon_shape'] : "")."'>";
@@ -208,25 +219,26 @@ class widget_vcard extends WP_Widget
 
 		$new_instance = wp_parse_args((array)$new_instance, $this->arr_default);
 
-		$instance['vcard_heading'] = strip_tags($new_instance['vcard_heading']);
-		$instance['vcard_name'] = strip_tags($new_instance['vcard_name']);
-		$instance['vcard_company'] = strip_tags($new_instance['vcard_company']);
-		$instance['vcard_company_no'] = strip_tags($new_instance['vcard_company_no']);
-		$instance['vcard_map'] = strip_tags($new_instance['vcard_map']);
-		$instance['vcard_address'] = strip_tags($new_instance['vcard_address']);
-		$instance['vcard_zipcode'] = strip_tags($new_instance['vcard_zipcode']);
-		$instance['vcard_city'] = strip_tags($new_instance['vcard_city']);
-		$instance['vcard_country'] = strip_tags($new_instance['vcard_country']);
-		$instance['vcard_phone'] = strip_tags($new_instance['vcard_phone']);
-		$instance['vcard_phone_show_number'] = strip_tags($new_instance['vcard_phone_show_number']);
-		$instance['vcard_icon_shape'] = strip_tags($new_instance['vcard_icon_shape']);
-		$instance['vcard_email'] = strip_tags($new_instance['vcard_email']);
-		$instance['vcard_form'] = strip_tags($new_instance['vcard_form']);
-		$instance['vcard_facebook'] = strip_tags($new_instance['vcard_facebook']);
-		$instance['vcard_gplus'] = strip_tags($new_instance['vcard_gplus']);
-		$instance['vcard_instagram'] = strip_tags($new_instance['vcard_instagram']);
-		$instance['vcard_linkedin'] = strip_tags($new_instance['vcard_linkedin']);
-		$instance['vcard_twitter'] = strip_tags($new_instance['vcard_twitter']);
+		$instance['vcard_heading'] = sanitize_text_field($new_instance['vcard_heading']);
+		$instance['vcard_name'] = sanitize_text_field($new_instance['vcard_name']);
+		$instance['vcard_company'] = sanitize_text_field($new_instance['vcard_company']);
+		$instance['vcard_company_no'] = sanitize_text_field($new_instance['vcard_company_no']);
+		$instance['vcard_map'] = sanitize_text_field($new_instance['vcard_map']);
+		$instance['vcard_address'] = sanitize_text_field($new_instance['vcard_address']);
+		$instance['vcard_zipcode'] = sanitize_text_field($new_instance['vcard_zipcode']);
+		$instance['vcard_city'] = sanitize_text_field($new_instance['vcard_city']);
+		$instance['vcard_country'] = sanitize_text_field($new_instance['vcard_country']);
+		$instance['vcard_phone'] = sanitize_text_field($new_instance['vcard_phone']);
+		$instance['vcard_phone_show_number'] = sanitize_text_field($new_instance['vcard_phone_show_number']);
+		$instance['vcard_icon_shape'] = sanitize_text_field($new_instance['vcard_icon_shape']);
+		$instance['vcard_email'] = sanitize_text_field($new_instance['vcard_email']);
+		$instance['vcard_url'] = sanitize_text_field($new_instance['vcard_url']);
+		$instance['vcard_form'] = sanitize_text_field($new_instance['vcard_form']);
+		$instance['vcard_facebook'] = sanitize_text_field($new_instance['vcard_facebook']);
+		$instance['vcard_gplus'] = sanitize_text_field($new_instance['vcard_gplus']);
+		$instance['vcard_instagram'] = sanitize_text_field($new_instance['vcard_instagram']);
+		$instance['vcard_linkedin'] = sanitize_text_field($new_instance['vcard_linkedin']);
+		$instance['vcard_twitter'] = sanitize_text_field($new_instance['vcard_twitter']);
 
 		$instance['vcard_facebook'] = filter_social_url($instance['vcard_facebook']);
 		$instance['vcard_gplus'] = filter_social_url($instance['vcard_gplus']);
@@ -303,6 +315,8 @@ class widget_vcard extends WP_Widget
 					echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'value' => $instance['vcard_form']));
 				}
 			}
+
+			echo show_textfield(array('type' => 'url', 'name' => $this->get_field_name('vcard_url'), 'text' => __("URL", 'lang_vcard'), 'value' => $instance['vcard_url']));
 
 			$is_toggler_open = $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '';
 
