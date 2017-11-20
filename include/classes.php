@@ -169,7 +169,7 @@ class widget_vcard extends WP_Widget
 
 				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
 				{
-					echo "<p class='social".($instance['vcard_icon_shape'] != '' ? " ".$instance['vcard_icon_shape'] : "")."'>";
+					echo "<p class='social ".$instance['vcard_icon_shape'].(in_array($instance['vcard_icon_shape'], array('circle', 'rectangle')) ? " colorize" : "")."'>";
 
 						if($instance['vcard_form'] > 0)
 						{
@@ -248,6 +248,15 @@ class widget_vcard extends WP_Widget
 
 		return $instance;
 	}
+	
+	function get_icon_shapes_for_select()
+	{
+		return array(
+			'' => "-- ".__("None", 'lang_vcard')." --",
+			'circle' => __("Circle", 'lang_vcard'),
+			'rectangle' => __("Rectangle", 'lang_vcard'),
+		);
+	}
 
 	function form($instance)
 	{
@@ -294,11 +303,7 @@ class widget_vcard extends WP_Widget
 				echo show_select(array('data' => get_yes_no_for_select(), 'name' => $this->get_field_name('vcard_phone_show_number'), 'text' => __("Show Full Number", 'lang_vcard'), 'value' => $instance['vcard_phone_show_number']));
 			}
 
-			$arr_data = array();
-			$arr_data['rectangle'] = __("Rectangle", 'lang_vcard');
-			$arr_data['circle'] = __("Circle", 'lang_vcard');
-
-			echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_icon_shape'), 'text' => __("Icon Shape", 'lang_vcard'), 'value' => $instance['vcard_icon_shape']));
+			echo show_select(array('data' => $this->get_icon_shapes_for_select(), 'name' => $this->get_field_name('vcard_icon_shape'), 'text' => __("Icon Shape", 'lang_vcard'), 'value' => $instance['vcard_icon_shape']));
 
 			if(!($instance['vcard_form'] > 0))
 			{
