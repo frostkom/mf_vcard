@@ -162,7 +162,7 @@ class widget_vcard extends WP_Widget
 					echo "<p class='contact url'>
 						<a href='".$instance['vcard_url']."' class='value'>"
 							.($setting_vcard_icons ? "<i class='fa fa-globe'></i> " : "")
-							.mf_clean_url($instance['vcard_url'])
+							.remove_protocol(array('url' => $instance['vcard_url'], 'clean' => true))
 						."</a>
 					</p>";
 				}
