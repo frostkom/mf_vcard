@@ -3,13 +3,14 @@
 Plugin Name: MF vCard
 Plugin URI: https://github.com/frostkom/mf_vcard
 Description: 
-Version: 2.4.13
+Version: 2.4.14
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: http://frostkom.se
 Text Domain: lang_vcard
 Domain Path: /lang
 
+Depends: MF Base
 GitHub Plugin URI: frostkom/mf_vcard
 */
 
