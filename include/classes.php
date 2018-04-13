@@ -1,5 +1,19 @@
 <?php
 
+class mf_vcard
+{
+	function __construct(){}
+
+	function wp_head()
+	{
+		$plugin_include_url = plugin_dir_url(__FILE__);
+		$plugin_version = get_plugin_version(__FILE__);
+
+		mf_enqueue_style('style_vcard', $plugin_include_url."style.css", $plugin_version);
+		mf_enqueue_script('script_vcard', $plugin_include_url."script.js", $plugin_version);
+	}
+}
+
 class widget_vcard extends WP_Widget
 {
 	function __construct()
