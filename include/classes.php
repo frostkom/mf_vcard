@@ -287,11 +287,8 @@ class widget_vcard extends WP_Widget
 					echo show_textfield(array('name' => $this->get_field_name('vcard_company_no'), 'text' => __("Organization Number", 'lang_vcard'), 'value' => $instance['vcard_company_no']));
 				}
 
-			echo "</div>";
-
-			$is_toggler_open = $instance['vcard_address'] != '' || $instance['vcard_zipcode'] != '' || $instance['vcard_city'] != '' || $instance['vcard_country'] != '';
-
-			echo get_toggler_container(array('type' => 'start', 'open' => $is_toggler_open, 'text' => __("Address", 'lang_vcard')));
+			echo "</div>"
+			.get_toggler_container(array('type' => 'start', 'open' => ($instance['vcard_address'] != '' || $instance['vcard_zipcode'] != '' || $instance['vcard_city'] != '' || $instance['vcard_country'] != ''), 'text' => __("Address", 'lang_vcard')));
 
 				if(is_plugin_active("mf_maps/index.php"))
 				{
@@ -335,11 +332,8 @@ class widget_vcard extends WP_Widget
 				}
 			}
 
-			echo show_textfield(array('type' => 'url', 'name' => $this->get_field_name('vcard_url'), 'text' => __("URL", 'lang_vcard'), 'value' => $instance['vcard_url']));
-
-			$is_toggler_open = $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '';
-
-			echo get_toggler_container(array('type' => 'start', 'open' => $is_toggler_open, 'text' => __("Social Media", 'lang_vcard')))
+			echo show_textfield(array('type' => 'url', 'name' => $this->get_field_name('vcard_url'), 'text' => __("URL", 'lang_vcard'), 'value' => $instance['vcard_url']))
+			.get_toggler_container(array('type' => 'start', 'open' => ($instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != ''), 'text' => __("Social Media", 'lang_vcard')))
 				.show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook']))
 				.show_textfield(array('name' => $this->get_field_name('vcard_gplus'), 'text' => __("Google+", 'lang_vcard'), 'value' => $instance['vcard_gplus']))
 				.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => __("Instagram", 'lang_vcard'), 'value' => $instance['vcard_instagram']))
