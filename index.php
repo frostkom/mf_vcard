@@ -6,7 +6,7 @@ Description:
 Version: 2.4.18
 Licence: GPLv2 or later
 Author: Martin Fors
-Author URI: http://frostkom.se
+Author URI: https://frostkom.se
 Text Domain: lang_vcard
 Domain Path: /lang
 
