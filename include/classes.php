@@ -71,7 +71,7 @@ class widget_vcard extends WP_Widget
 				if($instance['vcard_name'] != '')
 				{
 					echo "<p class='fn'>"
-						.($setting_vcard_icons ? "<i class='fa fa-user'></i> " : "")
+						.($setting_vcard_icons ? "<i class='far fa-user'></i> " : "")
 						.$instance['vcard_name']
 					."</p>";
 				}
@@ -79,7 +79,7 @@ class widget_vcard extends WP_Widget
 				if($instance['vcard_company'] != '')
 				{
 					echo "<p class='org'>"
-						.($setting_vcard_icons ? "<i class='fa fa-building'></i> " : "")
+						.($setting_vcard_icons ? "<i class='far fa-building'></i> " : "")
 						.$instance['vcard_company'];
 
 						if($instance['vcard_company_no'] != '')
@@ -97,7 +97,7 @@ class widget_vcard extends WP_Widget
 						if($instance['vcard_address'] != '')
 						{
 							echo "<p class='street-address'>"
-								.($setting_vcard_icons ? "<i class='fa fa-envelope-o'></i> " : "");
+								.($setting_vcard_icons ? "<i class='far fa-envelope'></i> " : "");
 
 								if($instance['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php"))
 								{
@@ -165,7 +165,7 @@ class widget_vcard extends WP_Widget
 				{
 					echo "<p class='contact email'>
 						<a href='mailto:".$instance['vcard_email']."' class='value'>"
-							.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "")
+							.($setting_vcard_icons ? "<i class='far fa-envelope'></i> " : "")
 							.$instance['vcard_email']
 						."</a>
 					</p>";
@@ -191,33 +191,33 @@ class widget_vcard extends WP_Widget
 
 							if($form_url != '' && $form_url != '#')
 							{
-								echo "<a href='".$form_url."' rel='".$instance['vcard_form']."'><i class='fa fa-envelope'></i></a>";
+								echo "<a href='".$form_url."' rel='".$instance['vcard_form']."'><i class='far fa-envelope'></i></a>";
 							}
 						}
 
 						if($instance['vcard_facebook'] != '')
 						{
-							echo "<a href='//facebook.com/".$instance['vcard_facebook']."'><i class='fa fa-facebook'></i></a>";
+							echo "<a href='//facebook.com/".$instance['vcard_facebook']."'><i class='fab fa-facebook-f'></i></a>";
 						}
 
 						if($instance['vcard_gplus'] != '')
 						{
-							echo "<a href='//plus.google.com/".$instance['vcard_gplus']."'><i class='fa fa-google-plus'></i></a>";
+							echo "<a href='//plus.google.com/".$instance['vcard_gplus']."'><i class='fab fa-google-plus-g'></i></a>";
 						}
 
 						if($instance['vcard_instagram'] != '')
 						{
-							echo "<a href='//instagram.com/".$instance['vcard_instagram']."'><i class='fa fa-instagram'></i></a>";
+							echo "<a href='//instagram.com/".$instance['vcard_instagram']."'><i class='fab fa-instagram'></i></a>";
 						}
 
 						if($instance['vcard_linkedin'] != '')
 						{
-							echo "<a href='//linkedin.com/in/".$instance['vcard_linkedin']."'><i class='fa fa-linkedin'></i></a>";
+							echo "<a href='//linkedin.com/in/".$instance['vcard_linkedin']."'><i class='fab fa-linkedin-in'></i></a>";
 						}
 
 						if($instance['vcard_twitter'] != '')
 						{
-							echo "<a href='//twitter.com/".$instance['vcard_twitter']."'><i class='fa fa-twitter'></i></a>";
+							echo "<a href='//twitter.com/".$instance['vcard_twitter']."'><i class='fab fa-twitter'></i></a>";
 						}
 
 					echo "</p>";
