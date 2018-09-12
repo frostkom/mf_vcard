@@ -97,7 +97,7 @@ class widget_vcard extends WP_Widget
 						if($instance['vcard_address'] != '')
 						{
 							echo "<p class='street-address'>"
-								.($setting_vcard_icons ? "<i class='far fa-envelope'></i> " : "");
+								.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "");
 
 								if($instance['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php"))
 								{
@@ -165,7 +165,7 @@ class widget_vcard extends WP_Widget
 				{
 					echo "<p class='contact email'>
 						<a href='mailto:".$instance['vcard_email']."' class='value'>"
-							.($setting_vcard_icons ? "<i class='far fa-envelope'></i> " : "")
+							.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "")
 							.$instance['vcard_email']
 						."</a>
 					</p>";
@@ -191,7 +191,7 @@ class widget_vcard extends WP_Widget
 
 							if($form_url != '' && $form_url != '#')
 							{
-								echo "<a href='".$form_url."' rel='".$instance['vcard_form']."'><i class='far fa-envelope'></i></a>";
+								echo "<a href='".$form_url."' rel='".$instance['vcard_form']."'><i class='fa fa-envelope'></i></a>";
 							}
 						}
 

@@ -10,32 +10,32 @@
 			margin-left: .5em;
 		}
 
-		.vcard .social .fa
+		.vcard .social .fa, .vcard .social .fab
 		{
 			font-size: 1.8em;
 			padding: .4em;
 			position: relative;
 		}
 
-			.vcard .social.colorize .fa
+			.vcard .social.colorize .fa, .vcard .social.colorize .fab
 			{
 				background: #999;
 				border: .2em solid #999;
 				color: #fff;
 			}
 
-				.vcard .social.circle .fa
+				.vcard .social.circle .fa, .vcard .social.circle .fab
 				{
 					border-radius: 50%;
 					transition: all .8s ease;
 				}
 
-					.vcard .social.colorize .fa:hover
+					.vcard .social.colorize .fa:hover, .vcard .social.colorize .fab:hover
 					{
 						background: #fff;
 					}
 
-						.vcard .social.circle .fa:after
+						.vcard .social.circle .fa:after, .vcard .social.circle .fab:after
 						{
 							border: .1em solid #999;
 							border-radius: 50%;
@@ -51,14 +51,14 @@
 							transition: all 1.6s ease;
 						}
 
-							.vcard .social.circle .fa:hover:after
+							.vcard .social.circle .fa:hover:after, .vcard .social.circle .fab:hover:after
 							{
 								opacity: .4;
 								-webkit-transform: scale(1);
 								transform: scale(1);
 							}
 
-				.vcard .social.rectangle .fa
+				.vcard .social.rectangle .fa, .vcard .social.rectangle .fab
 				{
 					border-radius: .2em;
 					padding: .1em .4em;
@@ -69,7 +69,7 @@
 				color: #999;
 			}
 
-			.vcard .social.colorize .fa-facebook
+			.vcard .social.colorize .fa-facebook-f
 			{
 				background: #3b5998;
 				border-color: #3b5998;
@@ -77,28 +77,28 @@
 				padding-right: .6em !important;
 			}
 
-				.vcard .social.colorize .fa-facebook:after
+				.vcard .social.colorize .fa-facebook-f:after
 				{
 					border-color: #3b5998;
 				}
 
-				.vcard .social.colorize .fa-facebook:hover
+				.vcard .social.colorize .fa-facebook-f:hover
 				{
 					color: #3b5998;
 				}
 
-			.vcard .social.colorize .fa-google-plus
+			.vcard .social.colorize .fa-google-plus-g
 			{
 				background: #dd4b39;
 				border-color: #dd4b39;
 			}
 
-				.vcard .social.colorize .fa-google-plus:after
+				.vcard .social.colorize .fa-google-plus-g:after
 				{
 					border-color: #dd4b39;
 				}
 
-				.vcard .social.colorize .fa-google-plus:hover
+				.vcard .social.colorize .fa-google-plus-g:hover
 				{
 					color: #dd4b39;
 				}
@@ -121,7 +121,7 @@
 					color: #c02f2e;
 				}
 
-			.vcard .social.colorize .fa-linkedin
+			.vcard .social.colorize .fa-linkedin-in
 			{
 				background: #007bb6;
 				border-color: #007bb6;
@@ -129,12 +129,12 @@
 				padding-right: .5em !important;
 			}
 
-				.vcard .social.colorize .fa-linkedin:after
+				.vcard .social.colorize .fa-linkedin-in:after
 				{
 					border-color: #007bb6;
 				}
 
-				.vcard .social.colorize .fa-linkedin:hover
+				.vcard .social.colorize .fa-linkedin-in:hover
 				{
 					color: #007bb6;
 				}
