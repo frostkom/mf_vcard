@@ -71,7 +71,7 @@ class widget_vcard extends WP_Widget
 				if($instance['vcard_name'] != '')
 				{
 					echo "<p class='fn'>"
-						.($setting_vcard_icons ? "<i class='far fa-user'></i> " : "")
+						.($setting_vcard_icons ? "<i class='fa fa-user'></i> " : "")
 						.$instance['vcard_name']
 					."</p>";
 				}
@@ -79,7 +79,7 @@ class widget_vcard extends WP_Widget
 				if($instance['vcard_company'] != '')
 				{
 					echo "<p class='org'>"
-						.($setting_vcard_icons ? "<i class='far fa-building'></i> " : "")
+						.($setting_vcard_icons ? "<i class='fa fa-building'></i> " : "")
 						.$instance['vcard_company'];
 
 						if($instance['vcard_company_no'] != '')
