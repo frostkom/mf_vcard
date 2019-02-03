@@ -40,7 +40,6 @@ class widget_vcard extends WP_Widget
 			'vcard_url' => "",
 			'vcard_form' => "",
 			'vcard_facebook' => "",
-			'vcard_gplus' => "",
 			'vcard_instagram' => "",
 			'vcard_linkedin' => "",
 			'vcard_twitter' => "",
@@ -181,7 +180,7 @@ class widget_vcard extends WP_Widget
 					</p>";
 				}
 
-				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
+				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
 				{
 					echo "<p class='social ".$instance['vcard_icon_shape'].(in_array($instance['vcard_icon_shape'], array('circle', 'rectangle')) ? " colorize" : "")."'>";
 
@@ -198,11 +197,6 @@ class widget_vcard extends WP_Widget
 						if($instance['vcard_facebook'] != '')
 						{
 							echo "<a href='//facebook.com/".$instance['vcard_facebook']."'><i class='fab fa-facebook-f'></i></a>";
-						}
-
-						if($instance['vcard_gplus'] != '')
-						{
-							echo "<a href='//plus.google.com/".$instance['vcard_gplus']."'><i class='fab fa-google-plus-g'></i></a>";
 						}
 
 						if($instance['vcard_instagram'] != '')
@@ -249,13 +243,11 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_url'] = sanitize_text_field($new_instance['vcard_url']);
 		$instance['vcard_form'] = sanitize_text_field($new_instance['vcard_form']);
 		$instance['vcard_facebook'] = sanitize_text_field($new_instance['vcard_facebook']);
-		$instance['vcard_gplus'] = sanitize_text_field($new_instance['vcard_gplus']);
 		$instance['vcard_instagram'] = sanitize_text_field($new_instance['vcard_instagram']);
 		$instance['vcard_linkedin'] = sanitize_text_field($new_instance['vcard_linkedin']);
 		$instance['vcard_twitter'] = sanitize_text_field($new_instance['vcard_twitter']);
 
 		$instance['vcard_facebook'] = filter_social_url($instance['vcard_facebook']);
-		$instance['vcard_gplus'] = filter_social_url($instance['vcard_gplus']);
 		$instance['vcard_instagram'] = filter_social_url($instance['vcard_instagram']);
 		$instance['vcard_linkedin'] = filter_social_url($instance['vcard_linkedin']);
 		$instance['vcard_twitter'] = filter_social_url($instance['vcard_twitter']);
@@ -333,9 +325,8 @@ class widget_vcard extends WP_Widget
 			}
 
 			echo show_textfield(array('type' => 'url', 'name' => $this->get_field_name('vcard_url'), 'text' => __("URL", 'lang_vcard'), 'value' => $instance['vcard_url']))
-			.get_toggler_container(array('type' => 'start', 'open' => ($instance['vcard_facebook'] != '' || $instance['vcard_gplus'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != ''), 'text' => __("Social Media", 'lang_vcard')))
+			.get_toggler_container(array('type' => 'start', 'open' => ($instance['vcard_facebook'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != ''), 'text' => __("Social Media", 'lang_vcard')))
 				.show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook']))
-				.show_textfield(array('name' => $this->get_field_name('vcard_gplus'), 'text' => __("Google+", 'lang_vcard'), 'value' => $instance['vcard_gplus']))
 				.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => __("Instagram", 'lang_vcard'), 'value' => $instance['vcard_instagram']))
 				.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => __("LinkedIn", 'lang_vcard'), 'value' => $instance['vcard_linkedin']))
 				.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => __("Twitter", 'lang_vcard'), 'value' => $instance['vcard_twitter']))
