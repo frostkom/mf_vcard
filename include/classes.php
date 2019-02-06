@@ -38,7 +38,8 @@ class widget_vcard extends WP_Widget
 			'vcard_icon_shape' => 'circle',
 			'vcard_email' => "",
 			'vcard_url' => "",
-			'vcard_form' => "",
+			'vcard_form' => 0,
+			'vcard_page' => 0,
 			'vcard_facebook' => "",
 			'vcard_instagram' => "",
 			'vcard_linkedin' => "",
@@ -180,7 +181,7 @@ class widget_vcard extends WP_Widget
 					</p>";
 				}
 
-				if($instance['vcard_form'] != '' || $instance['vcard_facebook'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
+				if($instance['vcard_form'] > 0 || $instance['vcard_page'] > 0 || $instance['vcard_facebook'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
 				{
 					echo "<p class='social ".$instance['vcard_icon_shape'].(in_array($instance['vcard_icon_shape'], array('circle', 'rectangle')) ? " colorize" : "")."'>";
 
@@ -190,8 +191,13 @@ class widget_vcard extends WP_Widget
 
 							if($form_url != '' && $form_url != '#')
 							{
-								echo "<a href='".$form_url."' rel='".$instance['vcard_form']."'><i class='fa fa-envelope'></i></a>";
+								echo "<a href='".$form_url."'><i class='fa fa-envelope'></i></a>"; // rel='".$instance['vcard_form']."'
 							}
+						}
+
+						if($instance['vcard_page'] > 0)
+						{
+							echo "<a href='".get_permalink($instance['vcard_page'])."'><i class='fa fa-envelope'></i></a>";
 						}
 
 						if($instance['vcard_facebook'] != '')
@@ -242,6 +248,7 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_email'] = sanitize_text_field($new_instance['vcard_email']);
 		$instance['vcard_url'] = sanitize_text_field($new_instance['vcard_url']);
 		$instance['vcard_form'] = sanitize_text_field($new_instance['vcard_form']);
+		$instance['vcard_page'] = sanitize_text_field($new_instance['vcard_page']);
 		$instance['vcard_facebook'] = sanitize_text_field($new_instance['vcard_facebook']);
 		$instance['vcard_instagram'] = sanitize_text_field($new_instance['vcard_instagram']);
 		$instance['vcard_linkedin'] = sanitize_text_field($new_instance['vcard_linkedin']);
@@ -308,7 +315,7 @@ class widget_vcard extends WP_Widget
 
 			echo show_select(array('data' => $this->get_icon_shapes_for_select(), 'name' => $this->get_field_name('vcard_icon_shape'), 'text' => __("Icon Shape", 'lang_vcard'), 'value' => $instance['vcard_icon_shape']));
 
-			if(!($instance['vcard_form'] > 0))
+			if(!($instance['vcard_form'] > 0) && !($instance['vcard_page'] > 0))
 			{
 				echo show_textfield(array('name' => $this->get_field_name('vcard_email'), 'text' => __("E-mail", 'lang_vcard'), 'value' => $instance['vcard_email']));
 			}
@@ -320,7 +327,15 @@ class widget_vcard extends WP_Widget
 
 				if(count($arr_data) > 1)
 				{
-					echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail form", 'lang_vcard'), 'value' => $instance['vcard_form']));
+					echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_form'), 'text' => __("E-mail Form", 'lang_vcard'), 'value' => $instance['vcard_form']));
+				}
+
+				else
+				{
+					$arr_data = array();
+					get_post_children(array('add_choose_here' => true), $arr_data);
+
+					echo show_select(array('data' => $arr_data, 'name' => $this->get_field_name('vcard_page'), 'text' => __("E-mail Form", 'lang_vcard'), 'value' => $instance['vcard_page']));
 				}
 			}
 

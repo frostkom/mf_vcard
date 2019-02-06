@@ -12,7 +12,6 @@
 
 		.vcard .social .fa, .vcard .social .fab
 		{
-			font-size: 1.8em;
 			padding: .4em;
 			position: relative;
 		}
@@ -22,11 +21,13 @@
 				background: #999;
 				border: .2em solid #999;
 				color: #fff;
+				font-size: 1.8em;
 			}
 
 				.vcard .social.circle .fa, .vcard .social.circle .fab
 				{
 					border-radius: 50%;
+					font-size: 1.8em;
 					transition: all .8s ease;
 				}
 

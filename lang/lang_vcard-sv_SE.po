@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-03 14:08+0100\n"
+"POT-Creation-Date: 2019-02-06 09:23+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Martin Fors\n"
 "Language-Team: \n"
@@ -93,7 +93,7 @@ msgid "E-mail"
 msgstr "E-post"
 
 #: ../include/classes.php:323
-msgid "E-mail form"
+msgid "E-mail Form"
 msgstr "E-postformulär"
 
 #: ../include/classes.php:327
