@@ -6,11 +6,14 @@ class mf_vcard
 
 	function wp_head()
 	{
-		$plugin_include_url = plugin_dir_url(__FILE__);
-		$plugin_version = get_plugin_version(__FILE__);
+		if(apply_filters('get_widget_search', 'widget-vcard') > 0)
+		{
+			$plugin_include_url = plugin_dir_url(__FILE__);
+			$plugin_version = get_plugin_version(__FILE__);
 
-		mf_enqueue_style('style_vcard', $plugin_include_url."style.css", $plugin_version);
-		mf_enqueue_script('script_vcard', $plugin_include_url."script.js", $plugin_version);
+			mf_enqueue_style('style_vcard', $plugin_include_url."style.css", $plugin_version);
+			mf_enqueue_script('script_vcard', $plugin_include_url."script.js", $plugin_version);
+		}
 	}
 }
 
