@@ -344,10 +344,10 @@ class widget_vcard extends WP_Widget
 
 			echo show_textfield(array('type' => 'url', 'name' => $this->get_field_name('vcard_url'), 'text' => __("URL", 'lang_vcard'), 'value' => $instance['vcard_url']))
 			.get_toggler_container(array('type' => 'start', 'open' => ($instance['vcard_facebook'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != ''), 'text' => __("Social Media", 'lang_vcard')))
-				.show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => __("Facebook", 'lang_vcard'), 'value' => $instance['vcard_facebook']))
-				.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => __("Instagram", 'lang_vcard'), 'value' => $instance['vcard_instagram']))
-				.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => __("LinkedIn", 'lang_vcard'), 'value' => $instance['vcard_linkedin']))
-				.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => __("Twitter", 'lang_vcard'), 'value' => $instance['vcard_twitter']))
+				.show_textfield(array('name' => $this->get_field_name('vcard_facebook'), 'text' => "Facebook", 'value' => $instance['vcard_facebook']))
+				.show_textfield(array('name' => $this->get_field_name('vcard_instagram'), 'text' => "Instagram", 'value' => $instance['vcard_instagram']))
+				.show_textfield(array('name' => $this->get_field_name('vcard_linkedin'), 'text' => "LinkedIn", 'value' => $instance['vcard_linkedin']))
+				.show_textfield(array('name' => $this->get_field_name('vcard_twitter'), 'text' => "Twitter", 'value' => $instance['vcard_twitter']))
 			.get_toggler_container(array('type' => 'end'))
 		."</div>";
 	}

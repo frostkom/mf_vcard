@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-03 12:10+0100\n"
+"POT-Creation-Date: 2019-03-22 09:52+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Martin Fors\n"
 "Language-Team: \n"
@@ -18,17 +18,32 @@ msgstr ""
 msgid "None"
 msgstr "Ingen"
 
+msgid "Heading"
+msgstr "Overskriften"
+
 msgid "Name"
 msgstr "Navn"
 
 msgid "Organization"
 msgstr "Organisasjon"
 
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Show Map"
+msgstr "Vis kart"
+
+msgid "Zip Code"
+msgstr "Postnummer"
+
 msgid "City"
 msgstr "Sted"
 
 msgid "Country"
 msgstr "Land"
+
+msgid "Phone Number"
+msgstr "Telefonnummer"
 
 msgid "E-mail"
 msgstr "E-post"
