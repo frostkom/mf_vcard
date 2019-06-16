@@ -55,7 +55,6 @@ class widget_vcard extends WP_Widget
 	function widget($args, $instance)
 	{
 		extract($args);
-
 		$instance = wp_parse_args((array)$instance, $this->arr_default);
 
 		$setting_vcard_icons = get_option('setting_vcard_icons');
@@ -102,7 +101,7 @@ class widget_vcard extends WP_Widget
 							echo "<p class='street-address'>"
 								.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "");
 
-								if($instance['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php"))
+								if($instance['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php") && get_option('setting_gmaps_api') != '')
 								{
 									echo get_toggler_container(array('type' => 'start', 'icon_first' => false, 'text' => $instance['vcard_address']))
 										.get_map(array('input' => $instance['vcard_address']." ".$instance['vcard_city']))
@@ -233,7 +232,6 @@ class widget_vcard extends WP_Widget
 	function update($new_instance, $old_instance)
 	{
 		$instance = $old_instance;
-
 		$new_instance = wp_parse_args((array)$new_instance, $this->arr_default);
 
 		$instance['vcard_heading'] = sanitize_text_field($new_instance['vcard_heading']);
@@ -292,7 +290,7 @@ class widget_vcard extends WP_Widget
 			echo "</div>"
 			.get_toggler_container(array('type' => 'start', 'open' => ($instance['vcard_address'] != '' || $instance['vcard_zipcode'] != '' || $instance['vcard_city'] != '' || $instance['vcard_country'] != ''), 'text' => __("Address", 'lang_vcard')));
 
-				if(is_plugin_active("mf_maps/index.php"))
+				if(is_plugin_active("mf_maps/index.php") && get_option('setting_gmaps_api') != '')
 				{
 					echo show_select(array('data' => get_yes_no_for_select(), 'name' => $this->get_field_name('vcard_map'), 'text' => __("Show Map", 'lang_vcard'), 'value' => $instance['vcard_map']));
 				}
