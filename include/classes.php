@@ -63,6 +63,8 @@ class widget_vcard extends WP_Widget
 
 			if($instance['vcard_heading'] != '')
 			{
+				$instance['vcard_heading'] = apply_filters('widget_title', $instance['vcard_heading'], $instance, $this->id_base);
+
 				echo $before_title
 					.$instance['vcard_heading']
 				.$after_title;
