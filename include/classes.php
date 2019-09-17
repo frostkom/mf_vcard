@@ -49,7 +49,7 @@ class widget_vcard extends WP_Widget
 			'vcard_twitter' => "",
 		);
 
-		parent::__construct('widget-vcard', __("vCard", 'lang_vcard'), $widget_ops);
+		parent::__construct('widget-'.$widget_ops['classname'], __("vCard", 'lang_vcard'), $widget_ops);
 	}
 
 	function widget($args, $instance)
