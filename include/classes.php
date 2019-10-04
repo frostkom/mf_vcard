@@ -106,7 +106,8 @@ class widget_vcard extends WP_Widget
 								if($instance['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php") && get_option('setting_gmaps_api') != '')
 								{
 									echo get_toggler_container(array('type' => 'start', 'icon_first' => false, 'text' => $instance['vcard_address']))
-										.get_map(array('input' => $instance['vcard_address']." ".$instance['vcard_city']))
+										//.get_map(array('input' => $instance['vcard_address']." ".$instance['vcard_city']))
+										.apply_filters('get_map', '', array('input' => $instance['vcard_address']." ".$instance['vcard_city']))
 									.get_toggler_container(array('type' => 'end'));
 								}
 
