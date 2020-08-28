@@ -21,7 +21,7 @@ class widget_vcard extends WP_Widget
 {
 	function __construct()
 	{
-		$widget_ops = array(
+		$this->widget_ops = array(
 			'classname' => 'vcard',
 			'description' => __("Display a vCard with custom information", 'lang_vcard')
 		);
@@ -49,7 +49,7 @@ class widget_vcard extends WP_Widget
 			'vcard_twitter' => "",
 		);
 
-		parent::__construct('widget-'.$widget_ops['classname'], __("vCard", 'lang_vcard'), $widget_ops);
+		parent::__construct('widget-'.$this->widget_ops['classname'], __("vCard", 'lang_vcard'), $this->widget_ops);
 	}
 
 	function widget($args, $instance)
@@ -280,7 +280,7 @@ class widget_vcard extends WP_Widget
 		$instance = wp_parse_args((array)$instance, $this->arr_default);
 
 		echo "<div class='mf_form'>"
-			.show_textfield(array('name' => $this->get_field_name('vcard_heading'), 'text' => __("Heading", 'lang_vcard'), 'value' => $instance['vcard_heading'], 'xtra' => " id='vcard-title'"))
+			.show_textfield(array('name' => $this->get_field_name('vcard_heading'), 'text' => __("Heading", 'lang_vcard'), 'value' => $instance['vcard_heading'], 'xtra' => " id='".$this->widget_ops['classname']."-title'"))
 			.show_textfield(array('name' => $this->get_field_name('vcard_name'), 'text' => __("Name", 'lang_vcard'), 'value' => $instance['vcard_name']))
 			."<div class='flex_flow'>"
 				.show_textfield(array('name' => $this->get_field_name('vcard_company'), 'text' => __("Organization", 'lang_vcard'), 'value' => $instance['vcard_company']));
