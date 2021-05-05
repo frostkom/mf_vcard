@@ -9,6 +9,11 @@ function filter_social_url($in)
 		$in = $arr_url[count($arr_url) - 1];
 	}
 
+	if(substr($in, 0, 1) == "@")
+	{
+		$in = substr($in, 1);
+	}
+
 	return $in;
 }
 
