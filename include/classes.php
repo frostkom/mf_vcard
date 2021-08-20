@@ -308,7 +308,7 @@ class widget_vcard extends WP_Widget
 
 				echo show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Street Address", 'lang_vcard'), 'value' => $instance['vcard_address']))
 				."<div class='flex_flow'>"
-					.show_textfield(array('name' => $this->get_field_name('vcard_zipcode'), 'text' => __("Zip Code", 'lang_vcard'), 'value' => $instance['vcard_zipcode']))
+					.show_textfield(array('type' => 'number', 'name' => $this->get_field_name('vcard_zipcode'), 'text' => __("Zip Code", 'lang_vcard'), 'value' => $instance['vcard_zipcode']))
 					.show_textfield(array('name' => $this->get_field_name('vcard_city'), 'text' => __("City", 'lang_vcard'), 'value' => $instance['vcard_city']))
 				."</div>";
 
