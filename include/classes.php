@@ -187,51 +187,51 @@ class widget_vcard extends WP_Widget
 					</p>";
 				}
 
-				if($instance['vcard_form'] > 0 || $instance['vcard_page'] > 0 || $instance['vcard_facebook'] != '' || $instance['vcard_instagram'] != '' || $instance['vcard_github'] != '' || $instance['vcard_linkedin'] != '' || $instance['vcard_twitter'] != '')
+				$social_icons_temp = "";
+
+				if($instance['vcard_form'] > 0 && function_exists('get_form_url'))
 				{
-					echo "<p class='social ".$instance['vcard_icon_shape'].(in_array($instance['vcard_icon_shape'], array('circle', 'rectangle')) ? " colorize" : "")."'>";
+					$form_url = get_form_url($instance['vcard_form']);
 
-						if($instance['vcard_form'] > 0)
-						{
-							$form_url = get_form_url($instance['vcard_form']);
+					if($form_url != '' && $form_url != '#')
+					{
+						$social_icons_temp .= "<a href='".$form_url."'><i class='fa fa-envelope'></i></a>";
+					}
+				}
 
-							if($form_url != '' && $form_url != '#')
-							{
-								echo "<a href='".$form_url."'><i class='fa fa-envelope'></i></a>"; // rel='".$instance['vcard_form']."'
-							}
-						}
+				if($instance['vcard_page'] > 0)
+				{
+					$social_icons_temp .= "<a href='".get_permalink($instance['vcard_page'])."'><i class='fa fa-envelope'></i></a>";
+				}
 
-						if($instance['vcard_page'] > 0)
-						{
-							echo "<a href='".get_permalink($instance['vcard_page'])."'><i class='fa fa-envelope'></i></a>";
-						}
+				if($instance['vcard_facebook'] != '')
+				{
+					$social_icons_temp .= "<a href='//facebook.com/".$instance['vcard_facebook']."'><i class='fab fa-facebook-f'></i></a>";
+				}
 
-						if($instance['vcard_facebook'] != '')
-						{
-							echo "<a href='//facebook.com/".$instance['vcard_facebook']."'><i class='fab fa-facebook-f'></i></a>";
-						}
+				if($instance['vcard_instagram'] != '')
+				{
+					$social_icons_temp .= "<a href='//instagram.com/".$instance['vcard_instagram']."'><i class='fab fa-instagram'></i></a>";
+				}
 
-						if($instance['vcard_instagram'] != '')
-						{
-							echo "<a href='//instagram.com/".$instance['vcard_instagram']."'><i class='fab fa-instagram'></i></a>";
-						}
+				if($instance['vcard_github'] != '')
+				{
+					$social_icons_temp .= "<a href='//github.com/".$instance['vcard_github']."'><i class='fab fa-github'></i></a>";
+				}
 
-						if($instance['vcard_github'] != '')
-						{
-							echo "<a href='//github.com/".$instance['vcard_github']."'><i class='fab fa-github'></i></a>";
-						}
+				if($instance['vcard_linkedin'] != '')
+				{
+					$social_icons_temp .= "<a href='//linkedin.com/in/".$instance['vcard_linkedin']."'><i class='fab fa-linkedin-in'></i></a>";
+				}
 
-						if($instance['vcard_linkedin'] != '')
-						{
-							echo "<a href='//linkedin.com/in/".$instance['vcard_linkedin']."'><i class='fab fa-linkedin-in'></i></a>";
-						}
+				if($instance['vcard_twitter'] != '')
+				{
+					$social_icons_temp .= "<a href='//twitter.com/".$instance['vcard_twitter']."'><i class='fab fa-twitter'></i></a>";
+				}
 
-						if($instance['vcard_twitter'] != '')
-						{
-							echo "<a href='//twitter.com/".$instance['vcard_twitter']."'><i class='fab fa-twitter'></i></a>";
-						}
-
-					echo "</p>";
+				if($social_icons_temp != '')
+				{
+					echo "<p class='social ".$instance['vcard_icon_shape'].(in_array($instance['vcard_icon_shape'], array('circle', 'rectangle')) ? " colorize" : "")."'>".$social_icons_temp."</p>";
 				}
 
 			echo "</div>"
