@@ -32,6 +32,7 @@ class widget_vcard extends WP_Widget
 			'vcard_company' => "",
 			'vcard_company_no' => "",
 			'vcard_map' => 'no',
+			'vcard_address_link' => '',
 			'vcard_address' => "",
 			'vcard_zipcode' => "",
 			'vcard_city' => "",
@@ -114,7 +115,17 @@ class widget_vcard extends WP_Widget
 
 								else
 								{
-									echo $instance['vcard_address'];
+									if($instance['vcard_address_link'] != '')
+									{
+										echo "<a href='".$instance['vcard_address_link']."'>";
+									}
+
+										echo $instance['vcard_address'];
+
+									if($instance['vcard_address_link'] != '')
+									{
+										echo "</a>";
+									}
 								}
 
 							echo "</p>";
@@ -248,6 +259,7 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_company'] = sanitize_text_field($new_instance['vcard_company']);
 		$instance['vcard_company_no'] = sanitize_text_field($new_instance['vcard_company_no']);
 		$instance['vcard_map'] = sanitize_text_field($new_instance['vcard_map']);
+		$instance['vcard_address_link'] = sanitize_text_field($new_instance['vcard_address_link']);
 		$instance['vcard_address'] = sanitize_text_field($new_instance['vcard_address']);
 		$instance['vcard_zipcode'] = sanitize_text_field($new_instance['vcard_zipcode']);
 		$instance['vcard_city'] = sanitize_text_field($new_instance['vcard_city']);
@@ -304,6 +316,11 @@ class widget_vcard extends WP_Widget
 				if(is_plugin_active("mf_maps/index.php") && get_option('setting_gmaps_api') != '')
 				{
 					echo show_select(array('data' => get_yes_no_for_select(), 'name' => $this->get_field_name('vcard_map'), 'text' => __("Show Map", 'lang_vcard'), 'value' => $instance['vcard_map']));
+				}
+
+				else if($instance['vcard_address'] != '')
+				{
+					echo show_textfield(array('type' => 'url', 'name' => $this->get_field_name('vcard_address_link'), 'text' => __("Link", 'lang_vcard'), 'value' => $instance['vcard_address_link']));
 				}
 
 				echo show_textfield(array('name' => $this->get_field_name('vcard_address'), 'text' => __("Street Address", 'lang_vcard'), 'value' => $instance['vcard_address']))
