@@ -4,6 +4,34 @@ class mf_vcard
 {
 	function __construct(){}
 
+	function settings_vcard()
+	{
+		$options_area = __FUNCTION__;
+
+		add_settings_section($options_area, "", array($this, $options_area.'_callback'), BASE_OPTIONS_PAGE);
+
+		$arr_settings = array(
+			'setting_vcard_icons' => __("Display Icons", 'lang_vcard'),
+		);
+
+		show_settings_fields(array('area' => $options_area, 'object' => $this, 'settings' => $arr_settings));
+	}
+
+	function settings_vcard_callback()
+	{
+		$setting_key = get_setting_key(__FUNCTION__);
+
+		echo settings_header($setting_key, __("vCard", 'lang_vcard'));
+	}
+
+	function setting_vcard_icons_callback()
+	{
+		$setting_key = get_setting_key(__FUNCTION__);
+		$option = get_option($setting_key);
+
+		echo show_select(array('data' => get_yes_no_for_select(array('return_integer' => true)), 'name' => $setting_key, 'value' => $option, 'suffix' => __("Phone Number, Email, URL etc.", 'lang_vcard')));
+	}
+
 	function wp_head()
 	{
 		if(!is_plugin_active("mf_widget_logic_select/index.php") || apply_filters('get_widget_search', 'widget-vcard') > 0)
@@ -14,6 +42,11 @@ class mf_vcard
 			mf_enqueue_style('style_vcard', $plugin_include_url."style.css", $plugin_version);
 			mf_enqueue_script('script_vcard', $plugin_include_url."script.js", $plugin_version);
 		}
+	}
+
+	function widgets_init()
+	{
+		register_widget('widget_vcard');
 	}
 }
 
@@ -249,6 +282,23 @@ class widget_vcard extends WP_Widget
 		.$after_widget;
 	}
 
+	function filter_social_url($in)
+	{
+		if(preg_match("/\//", $in))
+		{
+			$arr_url = explode("/", trim($in, "/"));
+
+			$in = $arr_url[count($arr_url) - 1];
+		}
+
+		if(substr($in, 0, 1) == "@")
+		{
+			$in = substr($in, 1);
+		}
+
+		return $in;
+	}
+
 	function update($new_instance, $old_instance)
 	{
 		$instance = $old_instance;
@@ -277,11 +327,11 @@ class widget_vcard extends WP_Widget
 		$instance['vcard_linkedin'] = sanitize_text_field($new_instance['vcard_linkedin']);
 		$instance['vcard_twitter'] = sanitize_text_field($new_instance['vcard_twitter']);
 
-		$instance['vcard_facebook'] = filter_social_url($instance['vcard_facebook']);
-		$instance['vcard_instagram'] = filter_social_url($instance['vcard_instagram']);
-		$instance['vcard_github'] = filter_social_url($instance['vcard_github']);
-		$instance['vcard_linkedin'] = filter_social_url($instance['vcard_linkedin']);
-		$instance['vcard_twitter'] = filter_social_url($instance['vcard_twitter']);
+		$instance['vcard_facebook'] = $this->filter_social_url($instance['vcard_facebook']);
+		$instance['vcard_instagram'] = $this->filter_social_url($instance['vcard_instagram']);
+		$instance['vcard_github'] = $this->filter_social_url($instance['vcard_github']);
+		$instance['vcard_linkedin'] = $this->filter_social_url($instance['vcard_linkedin']);
+		$instance['vcard_twitter'] = $this->filter_social_url($instance['vcard_twitter']);
 
 		return $instance;
 	}
