@@ -94,7 +94,7 @@ class widget_vcard extends WP_Widget
 
 		$setting_vcard_icons = get_option('setting_vcard_icons');
 
-		echo $before_widget;
+		echo apply_filters('filter_before_widget', $before_widget);
 
 			if($instance['vcard_heading'] != '')
 			{
