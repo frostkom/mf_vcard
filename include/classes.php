@@ -52,14 +52,41 @@ class mf_vcard
 
 class widget_vcard extends WP_Widget
 {
+	var $widget_ops = array();
+
+	var $arr_default = array(
+		'vcard_heading' => "",
+		'vcard_name' => "",
+		'vcard_company' => "",
+		'vcard_company_no' => "",
+		'vcard_map' => 'no',
+		'vcard_address_link' => '',
+		'vcard_address' => "",
+		'vcard_zipcode' => "",
+		'vcard_city' => "",
+		'vcard_country' => "",
+		'vcard_phone' => "",
+		'vcard_phone_show_number' => 'yes',
+		'vcard_icon_shape' => 'circle',
+		'vcard_email' => "",
+		'vcard_url' => "",
+		'vcard_form' => 0,
+		'vcard_page' => 0,
+		'vcard_facebook' => "",
+		'vcard_instagram' => "",
+		'vcard_github' => "",
+		'vcard_linkedin' => "",
+		'vcard_twitter' => "",
+	);
+
 	function __construct()
 	{
 		$this->widget_ops = array(
 			'classname' => 'vcard',
-			'description' => __("Display a vCard with custom information", 'lang_vcard')
+			'description' => __("Display a vCard with custom information", 'lang_vcard'),
 		);
 
-		$this->arr_default = array(
+		/*$this->arr_default = array(
 			'vcard_heading' => "",
 			'vcard_name' => "",
 			'vcard_company' => "",
@@ -82,7 +109,7 @@ class widget_vcard extends WP_Widget
 			'vcard_github' => "",
 			'vcard_linkedin' => "",
 			'vcard_twitter' => "",
-		);
+		);*/
 
 		parent::__construct('widget-'.$this->widget_ops['classname'], __("vCard", 'lang_vcard'), $this->widget_ops);
 	}
