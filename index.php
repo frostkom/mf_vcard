@@ -3,7 +3,7 @@
 Plugin Name: MF vCard
 Plugin URI: https://github.com/frostkom/mf_vcard
 Description:
-Version: 2.5.7
+Version: 2.5.8
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: https://martinfors.se
