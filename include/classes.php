@@ -4,6 +4,259 @@ class mf_vcard
 {
 	function __construct(){}
 
+	function block_render_callback($attributes)
+	{
+		if(!isset($attributes['vcard_heading'])){			$attributes['vcard_heading'] = '';}
+		if(!isset($attributes['vcard_name'])){				$attributes['vcard_name'] = '';}
+		if(!isset($attributes['vcard_company'])){			$attributes['vcard_company'] = '';}
+		if(!isset($attributes['vcard_company_no'])){		$attributes['vcard_company_no'] = '';}
+		if(!isset($attributes['vcard_map'])){				$attributes['vcard_map'] = 'no';}
+		if(!isset($attributes['vcard_address_link'])){		$attributes['vcard_address_link'] = '';}
+		if(!isset($attributes['vcard_address'])){			$attributes['vcard_address'] = '';}
+		if(!isset($attributes['vcard_zipcode'])){			$attributes['vcard_zipcode'] = '';}
+		if(!isset($attributes['vcard_city'])){				$attributes['vcard_city'] = '';}
+		if(!isset($attributes['vcard_country'])){			$attributes['vcard_country'] = '';}
+		if(!isset($attributes['vcard_phone'])){				$attributes['vcard_phone'] = '';}
+		if(!isset($attributes['vcard_phone_show_number'])){	$attributes['vcard_phone_show_number'] = 'yes';}
+		if(!isset($attributes['vcard_icon_shape'])){		$attributes['vcard_icon_shape'] = 'circle';}
+		if(!isset($attributes['vcard_email'])){				$attributes['vcard_email'] = '';}
+		if(!isset($attributes['vcard_url'])){				$attributes['vcard_url'] = '';}
+		if(!isset($attributes['vcard_form'])){				$attributes['vcard_form'] = 0;}
+		if(!isset($attributes['vcard_page'])){				$attributes['vcard_page'] = 0;}
+		if(!isset($attributes['vcard_facebook'])){			$attributes['vcard_facebook'] = '';}
+		if(!isset($attributes['vcard_instagram'])){			$attributes['vcard_instagram'] = '';}
+		if(!isset($attributes['vcard_github'])){			$attributes['vcard_github'] = '';}
+		if(!isset($attributes['vcard_linkedin'])){			$attributes['vcard_linkedin'] = '';}
+		if(!isset($attributes['vcard_twitter'])){			$attributes['vcard_twitter'] = '';}
+
+		$out = "";
+
+		$setting_vcard_icons = get_option('setting_vcard_icons');
+
+		$out .= "<div class='widget vcard'>";
+
+			if($attributes['vcard_heading'] != '')
+			{
+				$out .= "<h3>".$attributes['vcard_heading']."</h3>";
+			}
+
+			$out .= "<div class='section'>";
+
+				if($attributes['vcard_name'] != '')
+				{
+					$out .= "<p class='fn'>"
+						.($setting_vcard_icons ? "<i class='fa fa-user'></i> " : "")
+						.$attributes['vcard_name']
+					."</p>";
+				}
+
+				if($attributes['vcard_company'] != '')
+				{
+					$out .= "<p class='org'>"
+						.($setting_vcard_icons ? "<i class='fa fa-building'></i> " : "")
+						.$attributes['vcard_company'];
+
+						if($attributes['vcard_company_no'] != '')
+						{
+							$out .= " <span>(".$attributes['vcard_company_no'].")</span>";
+						}
+
+					$out .= "</p>";
+				}
+
+				if($attributes['vcard_address'] != '' || $attributes['vcard_zipcode'] != '' || $attributes['vcard_city'] != '' || $attributes['vcard_country'] != '')
+				{
+					$out .= "<div class='adr'>";
+
+						if($attributes['vcard_address'] != '')
+						{
+							$out .= "<p class='street-address'>"
+								.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "");
+
+								if($attributes['vcard_map'] == 'yes' && is_plugin_active("mf_maps/index.php") && get_option('setting_gmaps_api') != '')
+								{
+									$out .= get_toggler_container(array('type' => 'start', 'icon_first' => false, 'text' => $attributes['vcard_address']))
+										//.get_map(array('input' => $attributes['vcard_address']." ".$attributes['vcard_city']))
+										.apply_filters('get_map', '', array('input' => $attributes['vcard_address']." ".$attributes['vcard_city']))
+									.get_toggler_container(array('type' => 'end'));
+								}
+
+								else
+								{
+									if($attributes['vcard_address_link'] != '')
+									{
+										$out .= "<a href='".$attributes['vcard_address_link']."'>";
+									}
+
+										$out .= $attributes['vcard_address'];
+
+									if($attributes['vcard_address_link'] != '')
+									{
+										$out .= "</a>";
+									}
+								}
+
+							$out .= "</p>";
+						}
+
+						if($attributes['vcard_zipcode'] != '' || $attributes['vcard_city'] != '' || $attributes['vcard_country'] != '')
+						{
+							$out .= "<p>"
+								.($setting_vcard_icons ? "<i class='fa fa-globe'></i> " : "");
+
+								if($attributes['vcard_zipcode'] != '')
+								{
+									$out .= "<span class='postal-code'>"
+										.$attributes['vcard_zipcode']
+									."</span>";
+								}
+
+								if($attributes['vcard_city'] != '')
+								{
+									$out .= ($attributes['vcard_zipcode'] != '' ? " " : "")
+									."<span class='locality'>"
+										.$attributes['vcard_city']
+									."</span>";
+								}
+
+								if($attributes['vcard_country'] != '')
+								{
+									$out .= ($attributes['vcard_zipcode'] != '' || $attributes['vcard_city'] != '' ? ", " : "")
+									."<span class='country-name'>"
+										.$attributes['vcard_country']
+									."</span>";
+								}
+
+							$out .= "</p>";
+						}
+
+					$out .= "</div>";
+				}
+
+				if($attributes['vcard_phone'] != '')
+				{
+					$show_number = $attributes['vcard_phone_show_number'] == 'yes';
+
+					$out .= "<p class='contact tel'>
+						<a href='".format_phone_no($attributes['vcard_phone'])."' class='value".($show_number ? "" : " hide_number")."'>"
+							.($setting_vcard_icons || !$show_number ? "<i class='fa fa-phone'></i> " : "")
+							."<span".($show_number ? "" : " class='hide'").">".$attributes['vcard_phone']."</span>"
+							."<span".($show_number ? " class='hide'" : "").">".shorten_text(array('string' => $attributes['vcard_phone'], 'limit' => 5))."</span>"
+						."</a>
+					</p>";
+				}
+
+				if($attributes['vcard_email'] != '')
+				{
+					$out .= "<p class='contact email'>
+						<a href='mailto:".$attributes['vcard_email']."' class='value'>"
+							.($setting_vcard_icons ? "<i class='fa fa-envelope'></i> " : "")
+							.$attributes['vcard_email']
+						."</a>
+					</p>";
+				}
+
+				if($attributes['vcard_url'] != '')
+				{
+					$out .= "<p class='contact url'>
+						<a href='".$attributes['vcard_url']."' class='value'>"
+							.($setting_vcard_icons ? "<i class='fa fa-globe'></i> " : "")
+							.remove_protocol(array('url' => $attributes['vcard_url'], 'clean' => true))
+						."</a>
+					</p>";
+				}
+
+				$social_icons_temp = "";
+
+				if($attributes['vcard_form'] > 0 && is_plugin_active('mf_form/index.php'))
+				{
+					global $obj_form;
+
+					$form_url = $obj_form->get_form_url($attributes['vcard_form']);
+
+					if($form_url != '' && $form_url != '#')
+					{
+						$social_icons_temp .= "<a href='".$form_url."'><i class='fa fa-envelope'></i></a>";
+					}
+				}
+
+				if($attributes['vcard_page'] > 0)
+				{
+					$social_icons_temp .= "<a href='".get_permalink($attributes['vcard_page'])."'><i class='fa fa-envelope'></i></a>";
+				}
+
+				if($attributes['vcard_facebook'] != '')
+				{
+					$social_icons_temp .= "<a href='//facebook.com/".$attributes['vcard_facebook']."'><i class='fab fa-facebook-f'></i></a>";
+				}
+
+				if($attributes['vcard_instagram'] != '')
+				{
+					$social_icons_temp .= "<a href='//instagram.com/".$attributes['vcard_instagram']."'><i class='fab fa-instagram'></i></a>";
+				}
+
+				if($attributes['vcard_github'] != '')
+				{
+					$social_icons_temp .= "<a href='//github.com/".$attributes['vcard_github']."'><i class='fab fa-github'></i></a>";
+				}
+
+				if($attributes['vcard_linkedin'] != '')
+				{
+					$social_icons_temp .= "<a href='//linkedin.com/in/".$attributes['vcard_linkedin']."'><i class='fab fa-linkedin-in'></i></a>";
+				}
+
+				if($attributes['vcard_twitter'] != '')
+				{
+					$social_icons_temp .= "<a href='//twitter.com/".$attributes['vcard_twitter']."'><i class='fab fa-twitter'></i></a>";
+				}
+
+				if($social_icons_temp != '')
+				{
+					$out .= "<p class='social ".$attributes['vcard_icon_shape'].(in_array($attributes['vcard_icon_shape'], array('circle', 'rectangle')) ? " colorize" : "")."'>".$social_icons_temp."</p>";
+				}
+
+			$out .= "</div>
+		</div>";
+
+		return $out;
+	}
+
+	function get_icon_shapes_for_select()
+	{
+		return array(
+			'' => "-- ".__("None", 'lang_vcard')." --",
+			'circle' => __("Circle", 'lang_vcard'),
+			'rectangle' => __("Rectangle", 'lang_vcard'),
+		);
+	}
+
+	function init()
+	{
+		// Blocks
+		#######################
+		$plugin_include_url = plugin_dir_url(__FILE__);
+		$plugin_version = get_plugin_version(__FILE__);
+
+		wp_register_script('script_vcard_block_wp', $plugin_include_url."block/script_wp.js", array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor'), $plugin_version);
+
+		$arr_data = array();
+		get_post_children(array('add_choose_here' => true), $arr_data);
+
+		wp_localize_script('script_vcard_block_wp', 'script_vcard_block_wp', array(
+			'yes_no_for_select' => get_yes_no_for_select(),
+			'vcard_icon_shape' => $this->get_icon_shapes_for_select(),
+			'vcard_page' => $arr_data,
+		));
+
+		register_block_type('mf/vcard', array(
+			'editor_script' => 'script_vcard_block_wp',
+			'editor_style' => 'style_base_block_wp',
+			'render_callback' => array($this, 'block_render_callback'),
+			//'style' => 'style_base_block_wp',
+		));
+		#######################
+	}
+
 	function settings_vcard()
 	{
 		$options_area = __FUNCTION__;
@@ -52,8 +305,7 @@ class mf_vcard
 
 class widget_vcard extends WP_Widget
 {
-	var $widget_ops = array();
-
+	var $widget_ops;
 	var $arr_default = array(
 		'vcard_heading' => "",
 		'vcard_name' => "",
@@ -85,31 +337,6 @@ class widget_vcard extends WP_Widget
 			'classname' => 'vcard',
 			'description' => __("Display a vCard with custom information", 'lang_vcard'),
 		);
-
-		/*$this->arr_default = array(
-			'vcard_heading' => "",
-			'vcard_name' => "",
-			'vcard_company' => "",
-			'vcard_company_no' => "",
-			'vcard_map' => 'no',
-			'vcard_address_link' => '',
-			'vcard_address' => "",
-			'vcard_zipcode' => "",
-			'vcard_city' => "",
-			'vcard_country' => "",
-			'vcard_phone' => "",
-			'vcard_phone_show_number' => 'yes',
-			'vcard_icon_shape' => 'circle',
-			'vcard_email' => "",
-			'vcard_url' => "",
-			'vcard_form' => 0,
-			'vcard_page' => 0,
-			'vcard_facebook' => "",
-			'vcard_instagram' => "",
-			'vcard_github' => "",
-			'vcard_linkedin' => "",
-			'vcard_twitter' => "",
-		);*/
 
 		parent::__construct('widget-'.$this->widget_ops['classname'], __("vCard", 'lang_vcard'), $this->widget_ops);
 	}
@@ -260,9 +487,11 @@ class widget_vcard extends WP_Widget
 
 				$social_icons_temp = "";
 
-				if($instance['vcard_form'] > 0 && function_exists('get_form_url'))
+				if($instance['vcard_form'] > 0 && is_plugin_active('mf_form/index.php'))
 				{
-					$form_url = get_form_url($instance['vcard_form']);
+					global $obj_form;
+
+					$form_url = $obj_form->get_form_url($instance['vcard_form']);
 
 					if($form_url != '' && $form_url != '#')
 					{
