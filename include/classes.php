@@ -33,7 +33,7 @@ class mf_vcard
 
 		$setting_vcard_icons = get_option('setting_vcard_icons');
 
-		$out .= "<div class='widget vcard'>";
+		$out .= "<div class='widget vcard".(isset($attributes['className']) && $attributes['className'] != '' ? " ".$attributes['className'] : "")."'>";
 
 			if($attributes['vcard_heading'] != '')
 			{
