@@ -664,7 +664,7 @@ class widget_vcard extends WP_Widget
 					$obj_form = new mf_form();
 				}
 
-				$arr_data = $obj_form->get_for_select(array('local_only' => true));
+				$arr_data = $obj_form->get_for_select();
 
 				if(count($arr_data) > 1)
 				{
