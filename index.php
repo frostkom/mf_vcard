@@ -3,7 +3,7 @@
 Plugin Name: MF vCard
 Plugin URI: https://github.com/frostkom/mf_vcard
 Description:
-Version: 2.6.2
+Version: 2.6.3
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: https://martinfors.se
@@ -34,7 +34,10 @@ if(!function_exists('is_plugin_active') || function_exists('is_plugin_active') &
 		add_action('wp_head', array($obj_vcard, 'wp_head'), 0);
 	}
 
-	add_action('widgets_init', array($obj_vcard, 'widgets_init'));
+	if(wp_is_block_theme() == false)
+	{
+		add_action('widgets_init', array($obj_vcard, 'widgets_init'));
+	}
 
 	load_plugin_textdomain('lang_vcard', false, dirname(plugin_basename(__FILE__))."/lang/");
 

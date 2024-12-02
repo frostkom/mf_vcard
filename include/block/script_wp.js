@@ -13,8 +13,8 @@
 	{
 		title: __("vCard", 'lang_vcard'),
 		description: __("Display a vCard with custom information", 'lang_vcard'),
-		icon: 'excerpt-view', /* https://developer.wordpress.org/resource/dashicons/ */
-		category: 'widgets', /* common, formatting, layout, widgets, embed */
+		icon: 'excerpt-view',
+		category: 'widgets',
 		'attributes':
 		{
 			'align':
@@ -149,6 +149,10 @@
 			{
 				'fontSize': true,
 				'lineHeight': true
+			},
+			"__experimentalBorder":
+			{
+				"radius": true
 			}
 		},
 		edit: function(props)
