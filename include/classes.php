@@ -232,6 +232,8 @@ class mf_vcard
 
 	function init()
 	{
+		load_plugin_textdomain('lang_vcard', false, str_replace("/include", "", dirname(plugin_basename(__FILE__)))."/lang/");
+
 		// Blocks
 		#######################
 		$plugin_include_url = plugin_dir_url(__FILE__);
