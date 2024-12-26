@@ -261,18 +261,6 @@
 
 			/* Select */
 			/* ################### */
-			var arr_options = [];
-
-			jQuery.each(script_social_feed_block_wp.yes_no_for_select, function(index, value)
-			{
-				if(index == "")
-				{
-					index = 0;
-				}
-
-				arr_options.push({label: value, value: index});
-			});
-
 			arr_out.push(el(
 				'div',
 				{className: "wp_mf_block " + props.className},
@@ -281,7 +269,7 @@
 					{
 						label: __("Show Map", 'lang_vcard'),
 						value: props.attributes.vcard_map,
-						options: arr_options,
+						options: convert_php_array_to_block_js(script_social_feed_block_wp.yes_no_for_select, true),
 						multiple: true,
 						onChange: function(value)
 						{
@@ -414,18 +402,6 @@
 
 			/* Select */
 			/* ################### */
-			var arr_options = [];
-
-			jQuery.each(script_social_feed_block_wp.yes_no_for_select, function(index, value)
-			{
-				if(index == "")
-				{
-					index = 0;
-				}
-
-				arr_options.push({label: value, value: index});
-			});
-
 			arr_out.push(el(
 				'div',
 				{className: "wp_mf_block " + props.className},
@@ -434,7 +410,7 @@
 					{
 						label: __("Show Full Number", 'lang_vcard'),
 						value: props.attributes.vcard_phone_show_number,
-						options: arr_options,
+						options: convert_php_array_to_block_js(script_social_feed_block_wp.yes_no_for_select, true),
 						multiple: true,
 						onChange: function(value)
 						{
@@ -447,18 +423,6 @@
 
 			/* Select */
 			/* ################### */
-			var arr_options = [];
-
-			jQuery.each(script_social_feed_block_wp.vcard_icon_shape, function(index, value)
-			{
-				if(index == "")
-				{
-					index = 0;
-				}
-
-				arr_options.push({label: value, value: index});
-			});
-
 			arr_out.push(el(
 				'div',
 				{className: "wp_mf_block " + props.className},
@@ -467,7 +431,7 @@
 					{
 						label: __("Icon Shape", 'lang_vcard'),
 						value: props.attributes.vcard_icon_shape,
-						options: arr_options,
+						options: convert_php_array_to_block_js(script_social_feed_block_wp.vcard_icon_shape, true),
 						multiple: true,
 						onChange: function(value)
 						{
@@ -500,18 +464,6 @@
 
 			/* Select */
 			/* ################### */
-			var arr_options = [];
-
-			jQuery.each(script_social_feed_block_wp.vcard_page, function(index, value)
-			{
-				if(index == "")
-				{
-					index = 0;
-				}
-
-				arr_options.push({label: value, value: index});
-			});
-
 			arr_out.push(el(
 				'div',
 				{className: "wp_mf_block " + props.className},
@@ -520,7 +472,7 @@
 					{
 						label: __("E-mail Page", 'lang_vcard'),
 						value: props.attributes.vcard_page,
-						options: arr_options,
+						options: convert_php_array_to_block_js(script_social_feed_block_wp.vcard_page, true),
 						multiple: true,
 						onChange: function(value)
 						{
