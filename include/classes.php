@@ -239,15 +239,38 @@ class mf_vcard
 		$plugin_include_url = plugin_dir_url(__FILE__);
 		$plugin_version = get_plugin_version(__FILE__);
 
-		wp_register_script('script_vcard_block_wp', $plugin_include_url."block/script_wp.js", array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor'), $plugin_version);
+		wp_register_script('script_vcard_block_wp', $plugin_include_url."block/script_wp.js", array('wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-block-editor'), $plugin_version, true);
 
 		$arr_data = array();
 		get_post_children(array('add_choose_here' => true), $arr_data);
 
 		wp_localize_script('script_vcard_block_wp', 'script_vcard_block_wp', array(
+			'block_title' => __("vCard", 'lang_vcard'),
+			'block_description' => __("Display a vCard with custom information", 'lang_vcard'),
+			'vcard_heading_label' => __("Heading", 'lang_vcard'),
+			'vcard_name_label' => __("Name", 'lang_vcard'),
+			'vcard_company_label' => __("Organization", 'lang_vcard'),
+			'vcard_company_no_label' => __("Organization Number", 'lang_vcard'),
+			'vcard_map_label' => __("Show Map", 'lang_vcard'),
 			'yes_no_for_select' => get_yes_no_for_select(),
+			'vcard_address_link_label' => __("Link", 'lang_vcard'),
+			'vcard_address_label' => __("Street Address", 'lang_vcard'),
+			'vcard_zipcode_label' => __("Zip Code", 'lang_vcard'),
+			'vcard_city_label' => __("City", 'lang_vcard'),
+			'vcard_country_label' => __("Country", 'lang_vcard'),
+			'vcard_phone_label' => __("Phone Number", 'lang_vcard'),
+			'vcard_phone_show_number_label' => __("Show Full Number", 'lang_vcard'),
+			'vcard_icon_shape_label' => __("Icon Shape", 'lang_vcard'),
 			'vcard_icon_shape' => $this->get_icon_shapes_for_select(),
+			'vcard_email_label' => __("E-mail", 'lang_vcard'),
+			'vcard_page_label' => __("E-mail Page", 'lang_vcard'),
 			'vcard_page' => $arr_data,
+			'vcard_url_label' => __("URL", 'lang_vcard'),
+			'vcard_facebook_label' => __("Facebook", 'lang_vcard'),
+			'vcard_instagram_label' => __("Instagram", 'lang_vcard'),
+			'vcard_github_label' => __("GitHub", 'lang_vcard'),
+			'vcard_linkedin_label' => __("LinkedIn", 'lang_vcard'),
+			'vcard_twitter_label' => __("Twitter", 'lang_vcard'),
 		));
 
 		register_block_type('mf/vcard', array(
@@ -292,10 +315,9 @@ class mf_vcard
 		if(!is_plugin_active("mf_widget_logic_select/index.php") || apply_filters('get_widget_search', 'widget-vcard') > 0)
 		{
 			$plugin_include_url = plugin_dir_url(__FILE__);
-			$plugin_version = get_plugin_version(__FILE__);
 
-			mf_enqueue_style('style_vcard', $plugin_include_url."style.css", $plugin_version);
-			mf_enqueue_script('script_vcard', $plugin_include_url."script.js", $plugin_version);
+			mf_enqueue_style('style_vcard', $plugin_include_url."style.css");
+			mf_enqueue_script('script_vcard', $plugin_include_url."script.js");
 		}
 	}
 

@@ -1,18 +1,18 @@
 (function()
 {
-	var __ = wp.i18n.__,
-		el = wp.element.createElement,
+	var el = wp.element.createElement,
 		registerBlockType = wp.blocks.registerBlockType,
 		SelectControl = wp.components.SelectControl,
 		TextControl = wp.components.TextControl,
 		MediaUpload = wp.blockEditor.MediaUpload,
 	    Button = wp.components.Button,
-		MediaUploadCheck = wp.blockEditor.MediaUploadCheck;
+		MediaUploadCheck = wp.blockEditor.MediaUploadCheck,
+		InspectorControls = wp.blockEditor.InspectorControls;
 
 	registerBlockType('mf/vcard',
 	{
-		title: __("vCard", 'lang_vcard'),
-		description: __("Display a vCard with custom information", 'lang_vcard'),
+		title: script_vcard_block_wp.block_title,
+		description: script_vcard_block_wp.block_description,
 		icon: 'excerpt-view',
 		category: 'widgets',
 		'attributes':
@@ -157,453 +157,289 @@
 		},
 		edit: function(props)
 		{
-			var arr_out = [];
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
+			return el(
 				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Heading", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_heading,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_heading: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Name", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_name,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_name: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Organization", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_company,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_company: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Organization Number", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_company_no,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_company_no: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Heading", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.social_heading,
-						onChange: function(value)
-						{
-							props.setAttributes({social_heading: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Select */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					SelectControl,
-					{
-						label: __("Show Map", 'lang_vcard'),
-						value: props.attributes.vcard_map,
-						options: convert_php_array_to_block_js(script_social_feed_block_wp.yes_no_for_select, true),
-						multiple: true,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_map: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Link", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_address_link,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_address_link: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Street Address", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_address,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_address: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Zip Code", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_zipcode,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_zipcode: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("City", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_city,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_city: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Country", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_country,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_country: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Phone Number", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_phone,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_phone: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Select */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					SelectControl,
-					{
-						label: __("Show Full Number", 'lang_vcard'),
-						value: props.attributes.vcard_phone_show_number,
-						options: convert_php_array_to_block_js(script_social_feed_block_wp.yes_no_for_select, true),
-						multiple: true,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_phone_show_number: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Select */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					SelectControl,
-					{
-						label: __("Icon Shape", 'lang_vcard'),
-						value: props.attributes.vcard_icon_shape,
-						options: convert_php_array_to_block_js(script_social_feed_block_wp.vcard_icon_shape, true),
-						multiple: true,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_icon_shape: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("E-mail", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_email,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_email: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Select */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					SelectControl,
-					{
-						label: __("E-mail Page", 'lang_vcard'),
-						value: props.attributes.vcard_page,
-						options: convert_php_array_to_block_js(script_social_feed_block_wp.vcard_page, true),
-						multiple: true,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_page: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("URL", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_url,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_url: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Facebook", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_facebook,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_facebook: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Instagram", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_instagram,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_instagram: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("GitHub", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_github,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_github: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("HeadLinkedIning", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_linkedin,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_linkedin: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			/* Text */
-			/* ################### */
-			arr_out.push(el(
-				'div',
-				{className: "wp_mf_block " + props.className},
-				el(
-					TextControl,
-					{
-						label: __("Twitter", 'lang_vcard'),
-						type: 'text',
-						value: props.attributes.vcard_twitter,
-						onChange: function(value)
-						{
-							props.setAttributes({vcard_twitter: value});
-						}
-					}
-				)
-			));
-			/* ################### */
-
-			return arr_out;
+				{className: 'wp_mf_block_container'},
+				[
+					el(
+						InspectorControls,
+						'div',
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_heading_label,
+									type: 'text',
+									value: props.attributes.vcard_heading,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_heading: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_name_label,
+									type: 'text',
+									value: props.attributes.vcard_name,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_name: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_company_label,
+									type: 'text',
+									value: props.attributes.vcard_company,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_company: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_company_no_label,
+									type: 'text',
+									value: props.attributes.vcard_company_no,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_company_no: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_heading_label,
+									type: 'text',
+									value: props.attributes.social_heading,
+									onChange: function(value)
+									{
+										props.setAttributes({social_heading: value});
+									}
+								}
+							),
+							el(
+								SelectControl,
+								{
+									label: script_vcard_block_wp.vcard_map_label,
+									value: props.attributes.vcard_map,
+									options: convert_php_array_to_block_js(script_vcard_block_wp.yes_no_for_select, true),
+									multiple: true,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_map: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_address_link_label,
+									type: 'text',
+									value: props.attributes.vcard_address_link,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_address_link: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_address_label,
+									type: 'text',
+									value: props.attributes.vcard_address,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_address: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_zipcode_label,
+									type: 'text',
+									value: props.attributes.vcard_zipcode,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_zipcode: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_city_label,
+									type: 'text',
+									value: props.attributes.vcard_city,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_city: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_country_label,
+									type: 'text',
+									value: props.attributes.vcard_country,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_country: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_phone_label,
+									type: 'text',
+									value: props.attributes.vcard_phone,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_phone: value});
+									}
+								}
+							),
+							el(
+								SelectControl,
+								{
+									label: script_vcard_block_wp.vcard_phone_show_number_label,
+									value: props.attributes.vcard_phone_show_number,
+									options: convert_php_array_to_block_js(script_vcard_block_wp.yes_no_for_select, true),
+									multiple: true,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_phone_show_number: value});
+									}
+								}
+							),
+							el(
+								SelectControl,
+								{
+									label: script_vcard_block_wp.vcard_icon_shape_label,
+									value: props.attributes.vcard_icon_shape,
+									options: convert_php_array_to_block_js(script_vcard_block_wp.vcard_icon_shape, true),
+									multiple: true,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_icon_shape: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_email_label,
+									type: 'text',
+									value: props.attributes.vcard_email,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_email: value});
+									}
+								}
+							),
+							el(
+								SelectControl,
+								{
+									label: script_vcard_block_wp.vcard_page_label,
+									value: props.attributes.vcard_page,
+									options: convert_php_array_to_block_js(script_vcard_block_wp.vcard_page, true),
+									multiple: true,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_page: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_url_label,
+									type: 'text',
+									value: props.attributes.vcard_url,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_url: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_facebook_label,
+									type: 'text',
+									value: props.attributes.vcard_facebook,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_facebook: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_instagram_label,
+									type: 'text',
+									value: props.attributes.vcard_instagram,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_instagram: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_github_label,
+									type: 'text',
+									value: props.attributes.vcard_github,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_github: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_linkedin_label,
+									type: 'text',
+									value: props.attributes.vcard_linkedin,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_linkedin: value});
+									}
+								}
+							),
+							el(
+								TextControl,
+								{
+									label: script_vcard_block_wp.vcard_twitter_label,
+									type: 'text',
+									value: props.attributes.vcard_twitter,
+									onChange: function(value)
+									{
+										props.setAttributes({vcard_twitter: value});
+									}
+								}
+							)
+					),
+					el(
+						'strong',
+						{className: props.className},
+						script_vcard_block_wp.block_title
+					)
+				]
+			);
 		},
 		save: function()
 		{
