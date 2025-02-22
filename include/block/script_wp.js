@@ -212,7 +212,7 @@
 									}
 								}
 							),
-							el(
+							/*el(
 								TextControl,
 								{
 									label: script_vcard_block_wp.vcard_heading_label,
@@ -223,7 +223,7 @@
 										props.setAttributes({social_heading: value});
 									}
 								}
-							),
+							),*/
 							el(
 								SelectControl,
 								{
