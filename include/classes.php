@@ -312,7 +312,7 @@ class mf_vcard
 
 	function wp_head()
 	{
-		if((int)apply_filters('get_block_search', 'mf/vcard') > 0 || (int)apply_filters('get_widget_search', 'widget-vcard') > 0)
+		if(apply_filters('get_block_search', 0, 'mf/vcard') > 0 || (int)apply_filters('get_widget_search', 'widget-vcard') > 0)
 		{
 			$plugin_include_url = plugin_dir_url(__FILE__);
 
