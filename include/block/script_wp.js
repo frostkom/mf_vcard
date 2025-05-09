@@ -22,11 +22,6 @@
 				'type': 'string',
 				'default': ''
 			},
-			'vcard_heading':
-			{
-                'type': 'string',
-                'default': ''
-            },
 			'vcard_name':
 			{
                 'type': 'string',
@@ -73,11 +68,6 @@
                 'default': ''
             },
 			'vcard_phone':
-			{
-                'type': 'string',
-                'default': ''
-            },
-			'vcard_phone_show_number':
 			{
                 'type': 'string',
                 'default': ''
@@ -167,18 +157,6 @@
 							el(
 								TextControl,
 								{
-									label: script_vcard_block_wp.vcard_heading_label,
-									type: 'text',
-									value: props.attributes.vcard_heading,
-									onChange: function(value)
-									{
-										props.setAttributes({vcard_heading: value});
-									}
-								}
-							),
-							el(
-								TextControl,
-								{
 									label: script_vcard_block_wp.vcard_name_label,
 									type: 'text',
 									value: props.attributes.vcard_name,
@@ -212,25 +190,13 @@
 									}
 								}
 							),
-							/*el(
-								TextControl,
-								{
-									label: script_vcard_block_wp.vcard_heading_label,
-									type: 'text',
-									value: props.attributes.social_heading,
-									onChange: function(value)
-									{
-										props.setAttributes({social_heading: value});
-									}
-								}
-							),*/
 							el(
 								SelectControl,
 								{
 									label: script_vcard_block_wp.vcard_map_label,
 									value: props.attributes.vcard_map,
 									options: convert_php_array_to_block_js(script_vcard_block_wp.yes_no_for_select, true),
-									multiple: true,
+									multiple: false,
 									onChange: function(value)
 									{
 										props.setAttributes({vcard_map: value});
@@ -312,23 +278,10 @@
 							el(
 								SelectControl,
 								{
-									label: script_vcard_block_wp.vcard_phone_show_number_label,
-									value: props.attributes.vcard_phone_show_number,
-									options: convert_php_array_to_block_js(script_vcard_block_wp.yes_no_for_select, true),
-									multiple: true,
-									onChange: function(value)
-									{
-										props.setAttributes({vcard_phone_show_number: value});
-									}
-								}
-							),
-							el(
-								SelectControl,
-								{
 									label: script_vcard_block_wp.vcard_icon_shape_label,
 									value: props.attributes.vcard_icon_shape,
 									options: convert_php_array_to_block_js(script_vcard_block_wp.vcard_icon_shape, true),
-									multiple: true,
+									multiple: false,
 									onChange: function(value)
 									{
 										props.setAttributes({vcard_icon_shape: value});
@@ -353,7 +306,7 @@
 									label: script_vcard_block_wp.vcard_page_label,
 									value: props.attributes.vcard_page,
 									options: convert_php_array_to_block_js(script_vcard_block_wp.vcard_page, true),
-									multiple: true,
+									multiple: false,
 									onChange: function(value)
 									{
 										props.setAttributes({vcard_page: value});

@@ -6,7 +6,6 @@ class mf_vcard
 
 	function block_render_callback($attributes)
 	{
-		if(!isset($attributes['vcard_heading'])){			$attributes['vcard_heading'] = '';}
 		if(!isset($attributes['vcard_name'])){				$attributes['vcard_name'] = '';}
 		if(!isset($attributes['vcard_company'])){			$attributes['vcard_company'] = '';}
 		if(!isset($attributes['vcard_company_no'])){		$attributes['vcard_company_no'] = '';}
@@ -17,7 +16,6 @@ class mf_vcard
 		if(!isset($attributes['vcard_city'])){				$attributes['vcard_city'] = '';}
 		if(!isset($attributes['vcard_country'])){			$attributes['vcard_country'] = '';}
 		if(!isset($attributes['vcard_phone'])){				$attributes['vcard_phone'] = '';}
-		if(!isset($attributes['vcard_phone_show_number'])){	$attributes['vcard_phone_show_number'] = 'yes';}
 		if(!isset($attributes['vcard_icon_shape'])){		$attributes['vcard_icon_shape'] = 'circle';}
 		if(!isset($attributes['vcard_email'])){				$attributes['vcard_email'] = '';}
 		if(!isset($attributes['vcard_url'])){				$attributes['vcard_url'] = '';}
@@ -33,14 +31,8 @@ class mf_vcard
 
 		$setting_vcard_icons = get_option('setting_vcard_icons');
 
-		$out .= "<div".parse_block_attributes(array('class' => "widget vcard", 'attributes' => $attributes)).">";
-
-			if($attributes['vcard_heading'] != '')
-			{
-				$out .= "<h3>".$attributes['vcard_heading']."</h3>";
-			}
-
-			$out .= "<div class='section'>";
+		$out .= "<div".parse_block_attributes(array('class' => "widget vcard", 'attributes' => $attributes)).">
+			<div class='section'>";
 
 				if($attributes['vcard_name'] != '')
 				{
@@ -50,15 +42,24 @@ class mf_vcard
 					."</p>";
 				}
 
-				if($attributes['vcard_company'] != '')
+				if($attributes['vcard_company'] != '' || $attributes['vcard_company_no'] != '')
 				{
 					$out .= "<p class='org'>"
-						.($setting_vcard_icons ? "<i class='fa fa-building'></i> " : "")
-						.$attributes['vcard_company'];
+						.($setting_vcard_icons ? "<i class='fa fa-building'></i> " : "");
 
-						if($attributes['vcard_company_no'] != '')
+						if($attributes['vcard_company'] != '')
 						{
-							$out .= " <span>(".$attributes['vcard_company_no'].")</span>";
+							$out .= $attributes['vcard_company'];
+
+							if($attributes['vcard_company_no'] != '')
+							{
+								$out .= " (".$attributes['vcard_company_no'].")";
+							}
+						}
+
+						else
+						{
+							$out .= $attributes['vcard_company_no'];
 						}
 
 					$out .= "</p>";
@@ -135,13 +136,10 @@ class mf_vcard
 
 				if($attributes['vcard_phone'] != '')
 				{
-					$show_number = $attributes['vcard_phone_show_number'] == 'yes';
-
 					$out .= "<p class='contact tel'>
-						<a href='".format_phone_no($attributes['vcard_phone'])."' class='value".($show_number ? "" : " hide_number")."'>"
-							.($setting_vcard_icons || !$show_number ? "<i class='fa fa-phone'></i> " : "")
-							."<span".($show_number ? "" : " class='hide'").">".$attributes['vcard_phone']."</span>"
-							."<span".($show_number ? " class='hide'" : "").">".shorten_text(array('string' => $attributes['vcard_phone'], 'limit' => 5))."</span>"
+						<a href='".format_phone_no($attributes['vcard_phone'])."' class='value'>"
+							.($setting_vcard_icons ? "<i class='fa fa-phone'></i> " : "")
+							."<span>".$attributes['vcard_phone']."</span>"
 						."</a>
 					</p>";
 				}
@@ -247,7 +245,6 @@ class mf_vcard
 		wp_localize_script('script_vcard_block_wp', 'script_vcard_block_wp', array(
 			'block_title' => __("vCard", 'lang_vcard'),
 			'block_description' => __("Display a vCard with custom information", 'lang_vcard'),
-			'vcard_heading_label' => __("Heading", 'lang_vcard'),
 			'vcard_name_label' => __("Name", 'lang_vcard'),
 			'vcard_company_label' => __("Organization", 'lang_vcard'),
 			'vcard_company_no_label' => __("Organization Number", 'lang_vcard'),
@@ -259,7 +256,6 @@ class mf_vcard
 			'vcard_city_label' => __("City", 'lang_vcard'),
 			'vcard_country_label' => __("Country", 'lang_vcard'),
 			'vcard_phone_label' => __("Phone Number", 'lang_vcard'),
-			'vcard_phone_show_number_label' => __("Show Full Number", 'lang_vcard'),
 			'vcard_icon_shape_label' => __("Icon Shape", 'lang_vcard'),
 			'vcard_icon_shape' => $this->get_icon_shapes_for_select(),
 			'vcard_email_label' => __("E-mail", 'lang_vcard'),
